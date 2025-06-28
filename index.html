@@ -9,18 +9,38 @@
     <meta name="keywords"
         content="hobby, hobbies, interests, clubs, groups, society, societies, pastime, pastimes, social, socialise">
 
-    <title>pastimez|hobby finder</title>
+    <title>pastimez - hobby finder</title>
 
 <!-- Stylesheet -->
 <link rel="stylesheet" href="css/style.css">
 </head>
 
-<header>
-    <h1 id="text logo">Pastimez</h1>
-
-</header>
-
 <body>
+  <header>
+    <h1 id="text-logo">Pastimez</h1>
+  </header>
 
+  <form id="searchForm">
+    <label for="hobby">Choose a hobby:</label>
+    <select id="hobby">
+      <option value="hiking">Hiking</option>
+      <option value="photography">Photography</option>
+    </select>
+
+    <label for="radius">Radius (km):</label>
+    <input type="number" id="radius" value="10" min="1" max="100" />
+
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="map"></div>
+
+  <!-- The script that defines initMap MUST load before Maps API -->
+  <script src="js/script.js"></script>
+
+  <!-- Google Maps API (with callback to initMap defined in script.js) -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_BOqOK7jLCjPYx5Me_p1rCxQZtFHDNPw&callback=initMap">
+  </script>
 </body>
 </html>
