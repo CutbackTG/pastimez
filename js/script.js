@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const request = {
       location: userLocation,
       radius: radius,
-      keyword: hobby + " club" // e.g. "photography club", "hiking club"
+      keyword: hobby + " club" // e.g. "photography club", "hiking club", "art club"
     };
 
     service.nearbySearch(request, (results, status) => {
