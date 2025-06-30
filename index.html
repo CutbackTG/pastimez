@@ -27,25 +27,26 @@
 </head>
 <body>
   <header>
-    <h1 id="text-logo" class="text-center my-4">Pastimez</h1>
+    <h1 id="text-logo" class="text-center">Pastimez</h1>
   </header>
 
   <!-- Static Image Carousel -->
-   <div id="carousel-indicators" class="carousel slide">
-    <div class="static-carousel-indicators"> <!-- flex-->
+  <div class="d-flex justify-content-center">
+   <div id="carousel-indicators" class="carousel slide w-75" data-bs-ride="carousel">
+    <div class="carousel-indicators static-carousel-indicators">
       <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="assets/images/carousel-images/art-club.webp" class="d-block w-100" alt="Hobbies provide a healthy outlet for stress and can help you relax and unwind">
+            <img src="assets/images/carousel-images/art-club.webp" class="carousel-hobbies " alt="Hobbies provide a healthy outlet for stress and can help you relax and unwind">
           </div>
           <div class="carousel-item">
-            <img src="assets/images/carousel-images/running-club.webp" class="d-block w-100" alt="Engaging in enjoyable activities releases endorphins, which have mood-boosting effects">
+            <img src="assets/images/carousel-images/running-club.webp" class="carousel-hobbies " alt="Engaging in enjoyable activities releases endorphins, which have mood-boosting effects">
           </div>
           <div class="carousel-item">
-            <img src="assets/images/carousel-images/taichi-club.webp" class="d-block w-100" alt="Mastering a new skill or excelling in a hobby can boost self-confidence and self-worth">
+            <img src="assets/images/carousel-images/taichi-club.webp" class="carousel-hobbies " alt="Mastering a new skill or excelling in a hobby can boost self-confidence and self-worth">
           </div>
         </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carousel-indicators" data-bs-slide="prev">
@@ -57,9 +58,11 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+  </div>
 
   <!-- Main Content Area -->
   <main class="user-search">
+    <h2 class="heading-2 text-center">Find a new hobby</h2>
     <!-- Search Form -->
     <form id="searchForm" class="mb-4">
       <div class="mb-3">
@@ -107,11 +110,13 @@
     </form>
 
     <!-- Google Map -->
-    <div id="map" style="height: 400px; width: 100%;" class="mb-4"></div>
+  <div class="d-flex justify-content-center">
+    <div id="map" style="height: 500px; width: 75%;" class="hobby-map"></div>
+  </div>
 
     <!-- Dynamic Results Carousel -->
-    <div id="resultsCarouselWrapper" class="my-4">
-      <h2>Nearby Clubs</h2>
+    <div id="resultsCarouselWrapper" class="hobby-map">
+      <h2 class="heading-2 text-center">Nearby Clubs</h2>
       <div id="resultsCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="carouselInner"></div>
         <button class="carousel-control-prev" type="button" data-bs-target="#resultsCarousel" data-bs-slide="prev">

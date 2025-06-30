@@ -3,17 +3,27 @@ body {
   padding: 20px;
 }
 
-#carousel-hobbies {
-  height: 300px;
+.carousel-hobbies {
   width: 100%;
 }
 
-.static-carousel-indicators {
-  flex: auto;
+.heading-2 {
+  padding: 20px;
+  align-self: center;
 }
 
-form {
+.static-carousel-indicators {
+  background-color: #9d6fbc;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* space between indicators */
+  margin-top: 1rem;
+  position: static; /* prevent default absolute positioning */
+}
+
+.searchForm {
   margin-bottom: 20px;
+  padding: 20px;
 }
 
 #map {
@@ -25,12 +35,12 @@ form {
 /* Result card style */
 .result-card {
   gap: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #9d6fbc;
   border-radius: 8px;
   padding: 1rem;
   max-width: 700px;
   margin: 0 auto;
-  background: white;
+  background: rgb(241, 241, 241);
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
 }
 
@@ -78,9 +88,17 @@ form {
   margin-bottom: 0.75rem;
 }
 
+.carousel-control-prev-icon {
+  background-color: #9d6fbc;
+}
+
+.carousel-control-next-icon {
+  background-color: #9d6fbc;
+}
+
 /* Bootstrap button override for smaller size and black background */
 .btn-dark.btn-sm {
-  background-color: #ffffff;
+  background-color: #9d6fbc;
   border-color: #000;
   font-size: 0.85rem;
   padding: 0.25rem 0.6rem;
@@ -90,4 +108,8 @@ form {
 .btn-dark.btn-sm:focus {
   background-color: #222;
   border-color: #222;
+}
+
+.user-search {
+  padding-top: 20px;
 }

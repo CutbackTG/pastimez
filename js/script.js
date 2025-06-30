@@ -94,14 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
             ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
             : "https://via.placeholder.com/300x200?text=No+Image";
 
-        // Example category badge text and color based on keyword
+        // Example category badge text based on keyword
         let category = "Hobby";
         let badgeColor = "bg-primary";
 
         if (/sport|fitness|swimming|ice skating/i.test(keyword)) {
-          category = "Sports Spot";
+          category = "Sports & Fitness";
         } else if (/craft|model|jewellery|cooking/i.test(keyword)) {
-          category = "Craft Corner";
+          category = "Crafting & Creativity";
         }
 
         const card = `
