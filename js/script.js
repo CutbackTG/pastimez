@@ -74,64 +74,74 @@ document.addEventListener("DOMContentLoaded", () => {
     carouselInner.innerHTML = ""; // Clear previous results
 
     service.nearbySearch(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        results.forEach((place, index) => {
-          const marker = new google.maps.Marker({
-            map,
-            position: place.geometry.location,
-            title: place.name,
-          });
-          markers.push(marker);
+      if (status !== google.maps.places.PlacesServiceStatus.OK || !results.length) {
+        alert("No results found.");
+        return;
+      }
 
-          const activeClass = index === 0 ? "active" : "";
-          const photoUrl =
-            place.photos && place.photos.length
-              ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
-              : "https://via.placeholder.com/300x200?text=No+Image";
+      results.forEach((place, index) => {
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location,
+          title: place.name,
+        });
 
-          const ratingHtml = place.rating
-            ? `<p class="mb-1">⭐ ${place.rating} / 5</p>`
-            : `<p class="text-muted mb-1">No rating available</p>`;
+        markers.push(marker);
 
-          const card = `
-            <div class="carousel-item ${activeClass}">
-              <div class="d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
-                  <img src="${photoUrl}" class="card-img-top" alt="${place.name} logo or photo" />
-                  <div class="card-body">
-                    <h5 class="card-title">${place.name}</h5>
-                    <p class="card-text">${place.vicinity || "No address available"}</p>
-                    ${ratingHtml}
-                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      place.name
-                    )}" target="_blank" class="btn btn-primary">View on Google Maps</a>
-                  </div>
-                </div>
+        const activeClass = index === 0 ? "active" : "";
+        const photoUrl =
+          place.photos && place.photos.length
+            ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
+            : "https://via.placeholder.com/300x200?text=No+Image";
+
+        // Example category badge text and color based on keyword
+        let category = "Hobby";
+        let badgeColor = "bg-primary";
+
+        if (/sport|fitness|swimming|ice skating/i.test(keyword)) {
+          category = "Sports Spot";
+          badgeColor = "bg-success"; // green
+        } else if (/craft|model|jewellery|cooking/i.test(keyword)) {
+          category = "Craft Corner";
+          badgeColor = "bg-purple"; // custom purple defined in CSS
+        }
+
+        const card = `
+          <div class="carousel-item ${activeClass}">
+            <div class="result-card d-flex flex-row align-items-center">
+              <div class="image-wrapper flex-shrink-0">
+                <img src="${photoUrl}" alt="${place.name} image" class="result-img" />
               </div>
-            </div>
-          `;
-
-          carouselInner.insertAdjacentHTML("beforeend", card);
-
-          const infoWindow = new google.maps.InfoWindow({
-            content: `
-              <div style="max-width: 200px;">
-                <strong>${place.name}</strong><br/>
-                ${place.vicinity || ""}<br/>
+              <div class="content-wrapper px-3">
+                <span class="badge ${badgeColor} category-badge">${category}</span>
+                <h3 class="result-title mt-2">${place.name}</h3>
+                <p class="result-description">${place.vicinity || "Address not available"}</p>
                 <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                   place.name
-                )}" target="_blank">View on Google Maps</a>
+                )}" target="_blank" class="btn btn-dark btn-sm">Read more</a>
               </div>
-            `,
-          });
+            </div>
+          </div>
+        `;
 
-          marker.addListener("click", () => {
-            infoWindow.open(map, marker);
-          });
+        carouselInner.insertAdjacentHTML("beforeend", card);
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: `
+            <div style="max-width: 200px;">
+              <strong>${place.name}</strong><br/>
+              ${place.vicinity || ""}<br/>
+              <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                place.name
+              )}" target="_blank">View on Google Maps</a>
+            </div>
+          `,
         });
-      } else {
-        alert("No results found.");
-      }
+
+        marker.addListener("click", () => {
+          infoWindow.open(map, marker);
+        });
+      });
     });
   });
 });
