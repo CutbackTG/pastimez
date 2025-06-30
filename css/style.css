@@ -5,7 +5,11 @@ body {
 
 #carousel-hobbies {
   height: 300px;
-  width: 80%;
+  width: 100%;
+}
+
+.static-carousel-indicators {
+  flex: auto;
 }
 
 form {
@@ -16,12 +20,6 @@ form {
   height: 500px;
   width: 100%;
   margin-top: 20px;
-}
-
-/* Custom purple for Craft Corner */
-.bg-purple {
-  background-color: #6f42c1 !important;
-  color: white !important;
 }
 
 /* Result card style */
@@ -76,13 +74,13 @@ form {
 
 .result-description {
   font-size: 0.9rem;
-  color: #555;
+  color: #000000;
   margin-bottom: 0.75rem;
 }
 
 /* Bootstrap button override for smaller size and black background */
 .btn-dark.btn-sm {
-  background-color: #000;
+  background-color: #ffffff;
   border-color: #000;
   font-size: 0.85rem;
   padding: 0.25rem 0.6rem;

@@ -100,10 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (/sport|fitness|swimming|ice skating/i.test(keyword)) {
           category = "Sports Spot";
-          badgeColor = "bg-success"; // green
         } else if (/craft|model|jewellery|cooking/i.test(keyword)) {
           category = "Craft Corner";
-          badgeColor = "bg-purple"; // custom purple defined in CSS
         }
 
         const card = `
