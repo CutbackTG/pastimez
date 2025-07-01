@@ -52,11 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
     new bootstrap.Collapse(document.getElementById("collapseRadius"), { toggle: true });
   });
 
-  radiusInput.addEventListener("blur", () => {
-    if (radiusInput.value.trim() !== "") {
-      radiusInput.closest("form").scrollIntoView({ behavior: "smooth", block: "end" });
-    }
-  });
+  // Commented out to prevent jumpy scroll behavior
+  // radiusInput.addEventListener("blur", () => {
+  //   if (radiusInput.value.trim() !== "") {
+  //     radiusInput.closest("form").scrollIntoView({ behavior: "smooth", block: "end" });
+  //   }
+  // });
 
   document.getElementById("searchForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -150,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           const card = `
-            <div class="carousel-item ${carouselInner.children.length === 0 ? 'active' : ''}">
+            <div class="carousel-item${carouselInner.children.length === 0 ? ' active' : ''}">
               <div class="result-card d-flex flex-row align-items-center">
                 <div class="image-wrapper flex-shrink-0">
                   <img src="${photoUrl}" alt="${place.name} image" class="result-img" />
@@ -165,8 +166,12 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `;
 
-          console.log("Appending card for:", place.name);
           carouselInner.insertAdjacentHTML("beforeend", card);
+
+          // Scroll to results after first card is inserted
+          if (carouselInner.children.length === 1) {
+            document.getElementById("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+          }
 
           const infoWindow = new google.maps.InfoWindow({
             content: `
