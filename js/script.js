@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Style accordion body to flex inline
     body.style.display = "flex";
     body.style.alignItems = "center";
-    body.style.gap = "20px";
+    body.style.gap = "30px";
     body.style.backgroundColor = lightenColor(bgColor, 0.7);
     body.style.padding = "1rem";
     body.style.borderRadius = "0 0 0.5rem 0.5rem";
@@ -251,23 +251,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const accordionItems = document.querySelectorAll(".accordion-item");
 
-  styleAccordionItem(
-    accordionItems[0],
-    "#9d6fbc", // purple
-    "black",
-    "assets/images/icons/hobby-icon.png"
-  );
-  styleAccordionItem(
-    accordionItems[1],
-    "#9d6fbc",
-    "black",
-    "assets/images/icons/indoor-outdoor-icon.png"
-  );
-  styleAccordionItem(
-    accordionItems[2],
-    "#9d6fbc",
-    "black",
-    "assets/images/icons/distance-icon.png"
-  );
+styleAccordionItem(accordionItems[0], "#6a1b9a", "#ffffff", "assets/images/icons/hobby.png");
+styleAccordionItem(accordionItems[1], "#6a1b9a", "#ffffff", "assets/images/icons/location.png");
+styleAccordionItem(accordionItems[2], "#6a1b9a", "#ffffff", "assets/images/icons/distance.png");
 
-}); // end DOMContentLoaded
+
+});

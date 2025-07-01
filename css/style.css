@@ -13,7 +13,7 @@ body {
 }
 
 .static-carousel-indicators {
-  background-color: #9d6fbc;
+  background-color: #6a1b9a;
   display: flex;
   justify-content: center;
   gap: 10px; /* space between indicators */
@@ -32,10 +32,14 @@ body {
   margin-top: 20px;
 }
 
+.form-label {
+  color: #000000;
+}
+
 /* Result card style */
 .result-card {
   gap: 1rem;
-  border: 1px solid #9d6fbc;
+  border: 1px solid #6a1b9a;
   border-radius: 8px;
   padding: 1rem;
   max-width: 700px;
@@ -89,16 +93,16 @@ body {
 }
 
 .carousel-control-prev-icon {
-  background-color: #9d6fbc;
+  background-color: #6a1b9a;
 }
 
 .carousel-control-next-icon {
-  background-color: #9d6fbc;
+  background-color: #6a1b9a;
 }
 
 /* Bootstrap button override for smaller size and black background */
 .btn-dark.btn-sm {
-  background-color: #9d6fbc;
+  background-color: #6a1b9a;
   border-color: #000;
   font-size: 0.85rem;
   padding: 0.25rem 0.6rem;
