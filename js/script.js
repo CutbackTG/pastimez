@@ -2,12 +2,12 @@ let map;
 let userLocation;
 let markers = [];
 let activeInfoWindow = null;
-let userMarker = null; // Track "You are here" marker separately
+let userMarker = null;
 
 // Initialize map globally for Google Maps API callback
 window.initMap = function () {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 50.266, lng: -5.052 }, // Fallback to Cornwall
+    center: { lat: 50.266, lng: -5.052 },
     zoom: 10,
   });
 
@@ -20,7 +20,6 @@ window.initMap = function () {
         };
         map.setCenter(userLocation);
 
-        // Create user marker and store in separate variable
         userMarker = new google.maps.Marker({
           position: userLocation,
           map,
@@ -29,6 +28,7 @@ window.initMap = function () {
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           },
         });
+        markers.push(userMarker);
       },
       () => {
         console.warn("Geolocation permission denied or unavailable.");
@@ -38,7 +38,6 @@ window.initMap = function () {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Auto-advance accordion logic
   const hobbyInput = document.getElementById("hobbyInput");
   const indoorOutdoor = document.getElementById("indoorOutdoor");
   const radiusInput = document.getElementById("radius");
@@ -59,13 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Form submission and map logic
   document.getElementById("searchForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Clear search result markers, but keep userMarker
+    // Clear all markers except the user marker
     markers.forEach((m) => m.setMap(null));
     markers = [];
+
+    if (userMarker) {
+      userMarker.setMap(map);
+      markers.push(userMarker);
+    }
 
     if (!userLocation) {
       alert("User location not available yet.");
@@ -77,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const radiusMiles = parseInt(radiusInput.value);
     const radiusMeters = radiusMiles * 1609.34;
 
-    // Validate required inputs
     if (!hobby || !radiusMiles || isNaN(radiusMiles)) {
       alert("Please complete all fields before searching.");
       return;
@@ -100,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const carouselInner = document.getElementById("carouselInner");
-    carouselInner.innerHTML = ""; // Clear previous results
+    carouselInner.innerHTML = "";
 
     service.nearbySearch(request, (results, status) => {
       if (status !== google.maps.places.PlacesServiceStatus.OK || !results.length) {
@@ -108,7 +110,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      results.forEach((place, index) => {
+      const userLatLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
+
+      results.sort((a, b) => {
+        const d1 = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, a.geometry.location);
+        const d2 = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, b.geometry.location);
+        return d1 - d2;
+      });
+
+      results.forEach((place) => {
         const marker = new google.maps.Marker({
           map,
           position: place.geometry.location,
@@ -118,57 +128,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
         markers.push(marker);
 
-        const activeClass = index === 0 ? "active" : "";
-        const photoUrl =
-          place.photos && place.photos.length
-            ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
-            : "https://via.placeholder.com/300x200?text=No+Image";
+        const serviceDetails = new google.maps.places.PlacesService(map);
 
-        let category = "Hobby";
-        let badgeColor = "bg-primary";
+        serviceDetails.getDetails({ placeId: place.place_id }, (details, status) => {
+          const websiteUrl = (status === google.maps.places.PlacesServiceStatus.OK && details.website)
+            ? details.website
+            : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name)}`;
 
-        if (/sport|fitness|swimming|ice skating/i.test(keyword)) {
-          category = "Sports & Fitness";
-        } else if (/craft|model|jewellery|cooking/i.test(keyword)) {
-          category = "Crafting & Creativity";
-        }
+          const photoUrl =
+            place.photos && place.photos.length
+              ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
+              : "https://via.placeholder.com/300x200?text=No+Image";
 
-        const card = `
-          <div class="carousel-item ${activeClass}">
-            <div class="result-card d-flex flex-row align-items-center">
-              <div class="image-wrapper flex-shrink-0">
-                <img src="${photoUrl}" alt="${place.name} image" class="result-img" />
-              </div>
-              <div class="content-wrapper px-3">
-                <span class="badge ${badgeColor} category-badge">${category}</span>
-                <h3 class="result-title mt-2">${place.name}</h3>
-                <p class="result-description">${place.vicinity || "Address not available"}</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  place.name
-                )}" target="_blank" class="btn btn-dark btn-sm">Read more</a>
+          let category = "Hobby";
+          let badgeColor = "bg-primary";
+
+          if (/sport|fitness|swimming|ice skating/i.test(keyword)) {
+            category = "Sports & Fitness";
+          } else if (/craft|model|jewellery|cooking/i.test(keyword)) {
+            category = "Crafting & Creativity";
+          }
+
+          const card = `
+            <div class="carousel-item ${carouselInner.children.length === 0 ? 'active' : ''}">
+              <div class="result-card d-flex flex-row align-items-center">
+                <div class="image-wrapper flex-shrink-0">
+                  <img src="${photoUrl}" alt="${place.name} image" class="result-img" />
+                </div>
+                <div class="content-wrapper px-3">
+                  <span class="badge ${badgeColor} category-badge">${category}</span>
+                  <h3 class="result-title mt-2">${place.name}</h3>
+                  <p class="result-description">${place.vicinity || "Address not available"}</p>
+                  <a href="${websiteUrl}" target="_blank" class="btn btn-dark btn-sm">Visit Website</a>
+                </div>
               </div>
             </div>
-          </div>
-        `;
+          `;
 
-        carouselInner.insertAdjacentHTML("beforeend", card);
+          console.log("Appending card for:", place.name);
+          carouselInner.insertAdjacentHTML("beforeend", card);
 
-        const infoWindow = new google.maps.InfoWindow({
-          content: `
-            <div style="max-width: 200px;">
-              <strong>${place.name}</strong><br/>
-              ${place.vicinity || ""}<br/>
-              <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                place.name
-              )}" target="_blank">View on Google Maps</a>
-            </div>
-          `,
-        });
+          const infoWindow = new google.maps.InfoWindow({
+            content: `
+              <div style="max-width: 200px;">
+                <strong>${place.name}</strong><br/>
+                ${place.vicinity || ""}<br/>
+                <a href="${websiteUrl}" target="_blank">Website</a>
+              </div>
+            `,
+          });
 
-        marker.addListener("click", () => {
-          if (activeInfoWindow) activeInfoWindow.close();
-          infoWindow.open(map, marker);
-          activeInfoWindow = infoWindow;
+          marker.addListener("click", () => {
+            if (activeInfoWindow) activeInfoWindow.close();
+            infoWindow.open(map, marker);
+            activeInfoWindow = infoWindow;
+          });
         });
       });
     });
