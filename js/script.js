@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const hobby = document.getElementById("hobbyInput").value.trim();
+    const hobby = document.getElementById("hobbyInput").value;
     const preference = document.getElementById("indoorOutdoor").value;
     const radiusMiles = parseInt(document.getElementById("radius").value);
     const radiusMeters = radiusMiles * 1609.34; // Convert miles to meters
