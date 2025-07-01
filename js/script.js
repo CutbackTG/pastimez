@@ -52,13 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     new bootstrap.Collapse(document.getElementById("collapseRadius"), { toggle: true });
   });
 
-  // Commented out to prevent jumpy scroll behavior
-  // radiusInput.addEventListener("blur", () => {
-  //   if (radiusInput.value.trim() !== "") {
-  //     radiusInput.closest("form").scrollIntoView({ behavior: "smooth", block: "end" });
-  //   }
-  // });
-
   document.getElementById("searchForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -191,5 +184,90 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     });
+
   });
-});
+
+  // --- Accordion styling and image injection ---
+
+  function styleAccordionItem(accordionItem, bgColor, textColor, imgUrl) {
+    const button = accordionItem.querySelector(".accordion-button");
+    const body = accordionItem.querySelector(".accordion-body");
+
+    // Style header button
+    button.style.backgroundColor = bgColor;
+    button.style.color = textColor;
+    button.style.fontWeight = "700";
+    button.style.borderRadius = "0.5rem";
+    button.style.border = "none";
+
+    // Style accordion body to flex inline
+    body.style.display = "flex";
+    body.style.alignItems = "center";
+    body.style.gap = "20px";
+    body.style.backgroundColor = lightenColor(bgColor, 0.7);
+    body.style.padding = "1rem";
+    body.style.borderRadius = "0 0 0.5rem 0.5rem";
+
+    // Style label and input/select inline
+    const label = body.querySelector("label");
+    const input = body.querySelector("input, select");
+
+    label.style.flex = "1 0 30%";
+    label.style.marginBottom = "0";
+    label.style.color = textColor;
+    label.style.fontWeight = "600";
+
+    input.style.flex = "1 0 70%";
+    input.style.padding = "0.5rem";
+    input.style.border = `1px solid ${textColor}`;
+    input.style.borderRadius = "0.3rem";
+
+    // Add icon image left side if not present
+    let img = accordionItem.querySelector(".accordion-image");
+    if (!img) {
+      img = document.createElement("img");
+      img.classList.add("accordion-image");
+      img.style.width = "60px";
+      img.style.height = "60px";
+      img.style.objectFit = "cover";
+      img.style.borderRadius = "8px";
+      img.style.marginRight = "10px";
+
+      body.insertBefore(img, label);
+    }
+    img.src = imgUrl;
+    img.alt = "Icon related to step";
+  }
+
+  function lightenColor(color, factor) {
+    let r, g, b;
+
+    r = Math.min(255, Math.floor(r + (255 - r) * factor));
+    g = Math.min(255, Math.floor(g + (255 - g) * factor));
+    b = Math.min(255, Math.floor(b + (255 - b) * factor));
+
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  const accordionItems = document.querySelectorAll(".accordion-item");
+
+  styleAccordionItem(
+    accordionItems[0],
+    "#9d6fbc", // purple
+    "black",
+    "assets/images/icons/hobby-icon.png"
+  );
+  styleAccordionItem(
+    accordionItems[1],
+    "#9d6fbc",
+    "black",
+    "assets/images/icons/indoor-outdoor-icon.png"
+  );
+  styleAccordionItem(
+    accordionItems[2],
+    "#9d6fbc",
+    "black",
+    "assets/images/icons/distance-icon.png"
+  );
+
+}); // end DOMContentLoaded
