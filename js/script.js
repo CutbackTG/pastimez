@@ -1,6 +1,8 @@
 let map;
 let userLocation;
-let markers = []; // Track markers for clearing later
+let markers = [];
+let activeInfoWindow = null;
+let userMarker = null; // Track "You are here" marker separately
 
 // Initialize map globally for Google Maps API callback
 window.initMap = function () {
@@ -18,7 +20,8 @@ window.initMap = function () {
         };
         map.setCenter(userLocation);
 
-        const userMarker = new google.maps.Marker({
+        // Create user marker and store in separate variable
+        userMarker = new google.maps.Marker({
           position: userLocation,
           map,
           title: "You are here",
@@ -26,7 +29,6 @@ window.initMap = function () {
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           },
         });
-        markers.push(userMarker);
       },
       () => {
         console.warn("Geolocation permission denied or unavailable.");
@@ -36,10 +38,32 @@ window.initMap = function () {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Auto-advance accordion logic
+  const hobbyInput = document.getElementById("hobbyInput");
+  const indoorOutdoor = document.getElementById("indoorOutdoor");
+  const radiusInput = document.getElementById("radius");
+
+  hobbyInput.addEventListener("blur", () => {
+    if (hobbyInput.value.trim() !== "") {
+      new bootstrap.Collapse(document.getElementById("collapsePreference"), { toggle: true });
+    }
+  });
+
+  indoorOutdoor.addEventListener("change", () => {
+    new bootstrap.Collapse(document.getElementById("collapseRadius"), { toggle: true });
+  });
+
+  radiusInput.addEventListener("blur", () => {
+    if (radiusInput.value.trim() !== "") {
+      radiusInput.closest("form").scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  });
+
+  // Form submission and map logic
   document.getElementById("searchForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Clear existing markers except user location marker
+    // Clear search result markers, but keep userMarker
     markers.forEach((m) => m.setMap(null));
     markers = [];
 
@@ -48,12 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const hobby = document.getElementById("hobbyInput").value;
-    const preference = document.getElementById("indoorOutdoor").value;
-    const radiusMiles = parseInt(document.getElementById("radius").value);
-    const radiusMeters = radiusMiles * 1609.34; // Convert miles to meters
+    const hobby = hobbyInput.value.trim();
+    const preference = indoorOutdoor.value;
+    const radiusMiles = parseInt(radiusInput.value);
+    const radiusMeters = radiusMiles * 1609.34;
 
-    // Build keyword with preference
+    // Validate required inputs
+    if (!hobby || !radiusMiles || isNaN(radiusMiles)) {
+      alert("Please complete all fields before searching.");
+      return;
+    }
+
     let keyword = hobby;
     if (preference === "indoor") {
       keyword += " indoor club";
@@ -84,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
           map,
           position: place.geometry.location,
           title: place.name,
+          icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
         });
 
         markers.push(marker);
@@ -94,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
             : "https://via.placeholder.com/300x200?text=No+Image";
 
-        // Example category badge text based on keyword
         let category = "Hobby";
         let badgeColor = "bg-primary";
 
@@ -137,7 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         marker.addListener("click", () => {
+          if (activeInfoWindow) activeInfoWindow.close();
           infoWindow.open(map, marker);
+          activeInfoWindow = infoWindow;
         });
       });
     });
