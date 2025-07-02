@@ -1,3 +1,13 @@
+/* General styles */
+body {
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #6a1b9a;
+  font-family: "Lato", sans-serif;
+}
+
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -5,6 +15,88 @@ body {
 
 .carousel-hobbies {
   width: 100%;
+}
+
+#pastimez-logo {
+  width: 300px;
+  max-width: 400px;
+  height: auto;
+  position: relative;
+}
+
+/* Header */
+header {
+  padding: 0 2rem;
+  z-index: 99;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; /* baseline to center is better for nav */
+  height: 100px; /* Define header height */
+  background: white;
+  position: relative;
+}
+
+/* Navbar */
+nav {
+  background-color: #ffffff;
+  width: 10%;
+  left: 0;
+  top: 80px; /* Right below header */
+  display: none;
+  z-index: 100;
+}
+
+/* Show nav on toggle */
+#nav-toggle:checked ~ nav {
+  display: block;
+}
+
+#menu {
+  font-size: 110%;
+  letter-spacing: 4px;
+  list-style-type: none;
+  color: #6a1b9a;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hide checkbox */
+#nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  font-size: 6rem;
+  color: #6a1b9a;
+  cursor: pointer;
+}
+
+
+#menu {
+  font-size: 120%;
+  letter-spacing: 4px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  list-style-type: none;
+  color: #6a1b9a;
+}
+
+#menu > li {
+  margin-bottom: 0.5em;
+}
+
+#nav-toggle:checked ~ nav {
+  display: block;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  font-size: 2rem;
+  color: #6a1b9a;
 }
 
 .heading-2 {
@@ -29,12 +121,18 @@ body {
 #map {
   height: 500px;
   width: 100%;
-  margin-top: 20px;
 }
 
 .form-label {
   color: #000000;
 }
+
+.map-container {
+      border: 2px solid #6a1b9a;
+      padding: 10px;
+      background-color: #6a1b9a;
+      max-width: 700px;
+    }
 
 /* Result card style */
 .result-card {
@@ -100,6 +198,18 @@ body {
   background-color: #6a1b9a;
 }
 
+.map-container {
+  width: 100%;
+  max-width: 1200px; /* optional max width */
+  margin: 0 auto;
+}
+
+#map {
+  height: 500px;
+  width: 100%; /* fills container */
+  border: 0;
+}
+
 /* Bootstrap button override for smaller size and black background */
 .btn-dark.btn-sm {
   background-color: #6a1b9a;
@@ -116,4 +226,25 @@ body {
 
 .user-search {
   padding-top: 20px;
+}
+
+#space {
+  height: 80px;
+}
+
+/* Footer */
+#social-networks {
+  background-color: #ffffff;
+  z-index: 4;
+  align-items: center;
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+#social-networks i {
+  font-size: 160%;
+  padding: 5%;
+  color: #6a1b9a;
 }

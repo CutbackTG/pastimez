@@ -22,8 +22,38 @@
   </head>
   <body>
     <header>
-      <h1 id="text-logo" class="text-center">Pastimez</h1>
+      <h1 id="text-logo" class="logo"></h1>
+      <img
+        id="pastimez-logo"
+        src="assets/images/logo/pastimez-logo.PNG"
+        width="300px"
+        max-width="400px"
+      />
+      <input type="checkbox" id="nav-toggle" name="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+
+      <nav>
+        <ul id="menu">
+          <li><a href="#searchFormContainer">Search</a></li>
+          <li><a href="#footerSocials">Socials</a></li>
+        </ul>
+      </nav>
     </header>
+
+    <div class="opening text-center container-fluid">
+      <p>
+        "Whether you're looking to discover new hobbies, join local clubs, or
+        connect with like-minded people nearby, you've come to the right place.
+        <br />
+        Simply tell us what interests you, choose your preferences, and find fun
+        activities and groups in your area
+        <br />
+        <br />
+        Let's get started on your next great adventure!"
+      </p>
+    </div>
 
     <div class="d-flex justify-content-center">
       <div
@@ -32,33 +62,72 @@
         data-bs-ride="carousel"
       >
         <div class="carousel-indicators static-carousel-indicators">
-          <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button
+            type="button"
+            data-bs-target="#carousel-indicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carousel-indicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carousel-indicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="assets/images/carousel-images/art-club.webp" class="carousel-hobbies" alt="Hobbies provide a healthy outlet for stress and can help you relax and unwind" />
+            <img
+              src="assets/images/carousel-images/art-club.webp"
+              class="carousel-hobbies"
+              alt="Hobbies provide a healthy outlet for stress and can help you relax and unwind"
+            />
           </div>
           <div class="carousel-item">
-            <img src="assets/images/carousel-images/running-club.webp" class="carousel-hobbies" alt="Engaging in enjoyable activities releases endorphins, which have mood-boosting effects" />
+            <img
+              src="assets/images/carousel-images/running-club.webp"
+              class="carousel-hobbies"
+              alt="Engaging in enjoyable activities releases endorphins, which have mood-boosting effects"
+            />
           </div>
           <div class="carousel-item">
-            <img src="assets/images/carousel-images/taichi-club.webp" class="carousel-hobbies" alt="Mastering a new skill or excelling in a hobby can boost self-confidence and self-worth" />
+            <img
+              src="assets/images/carousel-images/taichi-club.webp"
+              class="carousel-hobbies"
+              alt="Mastering a new skill or excelling in a hobby can boost self-confidence and self-worth"
+            />
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-indicators" data-bs-slide="prev">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carousel-indicators"
+          data-bs-slide="prev"
+        >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel-indicators" data-bs-slide="next">
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carousel-indicators"
+          data-bs-slide="next"
+        >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
     </div>
 
-    <main class="user-search">
+    <main id="searchFormContainer" class="user-search">
       <h2 class="heading-2 text-center">Find a new hobby</h2>
 
       <form id="searchForm" class="mb-4">
@@ -115,7 +184,11 @@
             >
               <div class="accordion-body">
                 <label for="categorySelect">Choose a category:</label>
-                <select id="categorySelect" name="categorySelect" class="form-select">
+                <select
+                  id="categorySelect"
+                  name="categorySelect"
+                  class="form-select"
+                >
                   <option value="">-- Select a category --</option>
                   <option value="sports">Sports & Fitness</option>
                   <option value="crafting">Crafting & Creativity</option>
@@ -203,16 +276,12 @@
         </div>
       </form>
 
-      <div class="d-flex justify-content-center">
-        <div
-          id="map"
-          style="height: 500px; width: 100%"
-          class="hobby-map"
-        ></div>
+      <div class="map-container d-flex justify-content-center">
+        <div id="map" class="hobby-map" style="height: 500px; width: 100%;" loading="lazy" allowfullscreen></div>
       </div>
 
       <div id="resultsCarouselWrapper" class="hobby-map">
-        <h2 class="heading-2 text-center">Nearby Clubs</h2>
+        <h2 class="heading-2 text-center">Clubs near you</h2>
         <div
           id="resultsCarousel"
           class="carousel slide"
@@ -241,6 +310,50 @@
       </div>
     </main>
 
+    <div id="space"></div>
+
+    <!-- footer element -->
+    <footer id="footerSocials">
+      <ul id="social-networks" class="socials">
+        <li>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="visit our Facebook page (opens in a new tab)"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://www.X.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="visit our X page (opens in a new tab)"
+            ><i class="fa-brands fa-square-x-twitter"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="visit our YouTube page (opens in a new tab)"
+            ><i class="fa-brands fa-youtube-square"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="visit our Instagram page (opens in a new tab)"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </li>
+      </ul>
+    </footer>
+
     <script src="js/script.js"></script>
     <script
       async
@@ -250,6 +363,11 @@
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+    <!-- JavaScript fontawesome kit -->
+    <script
+      src="https://kit.fontawesome.com/f84e35c3bf.js"
       crossorigin="anonymous"
     ></script>
   </body>
