@@ -1,3 +1,4 @@
+// Global variables
 let map;
 let userLocation;
 let markers = [];
@@ -42,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const indoorOutdoor = document.getElementById("indoorOutdoor");
   const radiusInput = document.getElementById("radius");
 
+  // --- Form interactivity ---
+
   hobbyInput.addEventListener("blur", () => {
     if (hobbyInput.value.trim() !== "") {
       new bootstrap.Collapse(document.getElementById("collapsePreference"), { toggle: true });
@@ -51,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
   indoorOutdoor.addEventListener("change", () => {
     new bootstrap.Collapse(document.getElementById("collapseRadius"), { toggle: true });
   });
+
+  // --- Search form submission ---
 
   document.getElementById("searchForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -161,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           carouselInner.insertAdjacentHTML("beforeend", card);
 
-          // Scroll to results after first card is inserted
           if (carouselInner.children.length === 1) {
             document.getElementById("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
           }
@@ -184,23 +188,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     });
-
   });
 
-  // --- Accordion styling and image injection ---
+  // --- Accordion styling and icon injection ---
 
   function styleAccordionItem(accordionItem, bgColor, textColor, imgUrl) {
     const button = accordionItem.querySelector(".accordion-button");
     const body = accordionItem.querySelector(".accordion-body");
 
-    // Style header button
     button.style.backgroundColor = bgColor;
     button.style.color = textColor;
     button.style.fontWeight = "700";
     button.style.borderRadius = "0.5rem";
     button.style.border = "none";
 
-    // Style accordion body to flex inline
     body.style.display = "flex";
     body.style.alignItems = "center";
     body.style.gap = "30px";
@@ -208,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
     body.style.padding = "1rem";
     body.style.borderRadius = "0 0 0.5rem 0.5rem";
 
-    // Style label and input/select inline
     const label = body.querySelector("label");
     const input = body.querySelector("input, select");
 
@@ -222,7 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
     input.style.border = `1px solid ${textColor}`;
     input.style.borderRadius = "0.3rem";
 
-    // Add icon image left side if not present
     let img = accordionItem.querySelector(".accordion-image");
     if (!img) {
       img = document.createElement("img");
@@ -241,19 +240,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function lightenColor(color, factor) {
     let r, g, b;
-
+    [r, g, b] = color.match(/\d+/g).map(Number);
     r = Math.min(255, Math.floor(r + (255 - r) * factor));
     g = Math.min(255, Math.floor(g + (255 - g) * factor));
     b = Math.min(255, Math.floor(b + (255 - b) * factor));
-
     return `rgb(${r}, ${g}, ${b})`;
   }
 
   const accordionItems = document.querySelectorAll(".accordion-item");
-
-styleAccordionItem(accordionItems[0], "#6a1b9a", "#ffffff", "assets/images/icons/hobby.png");
-styleAccordionItem(accordionItems[1], "#6a1b9a", "#ffffff", "assets/images/icons/location.png");
-styleAccordionItem(accordionItems[2], "#6a1b9a", "#ffffff", "assets/images/icons/distance.png");
-
-
+  styleAccordionItem(accordionItems[0], "#6a1b9a", "#ffffff", "assets/images/icons/hobby.png");
+  styleAccordionItem(accordionItems[1], "#6a1b9a", "#ffffff", "assets/images/icons/location.png");
+  styleAccordionItem(accordionItems[2], "#6a1b9a", "#ffffff", "assets/images/icons/distance.png");
 });
