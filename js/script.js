@@ -218,9 +218,12 @@ document.addEventListener("DOMContentLoaded", () => {
     label.style.fontWeight = "600";
 
     input.style.flex = "1 0 70%";
+    input.style.maxWidth = "400px";
+    input.style.width = "100%";
     input.style.padding = "0.5rem";
     input.style.border = `1px solid ${textColor}`;
     input.style.borderRadius = "0.3rem";
+    input.style.boxSizing = "border-box";
 
     let img = accordionItem.querySelector(".accordion-image");
     if (!img) {
@@ -257,6 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
   "#6a1b9a",           // same purple background color for consistency
   "#ffffff",           // white text color
   "assets/images/icons/category.png"  // new icon for category search
+  
 );
 
 });
