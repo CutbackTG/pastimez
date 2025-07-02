@@ -5,11 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #6a1b9a;
-  font-family: "Lato", sans-serif;
-}
-
-body {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   padding: 20px;
 }
 
