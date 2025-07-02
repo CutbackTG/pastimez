@@ -251,4 +251,12 @@ document.addEventListener("DOMContentLoaded", () => {
   styleAccordionItem(accordionItems[0], "#6a1b9a", "#ffffff", "assets/images/icons/hobby.png");
   styleAccordionItem(accordionItems[1], "#6a1b9a", "#ffffff", "assets/images/icons/location.png");
   styleAccordionItem(accordionItems[2], "#6a1b9a", "#ffffff", "assets/images/icons/distance.png");
+
+  styleAccordionItem(
+  accordionItems[3],
+  "#6a1b9a",           // same purple background color for consistency
+  "#ffffff",           // white text color
+  "assets/images/icons/category.png"  // new icon for category search
+);
+
 });
