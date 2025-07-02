@@ -43,24 +43,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const indoorOutdoor = document.getElementById("indoorOutdoor");
   const radiusInput = document.getElementById("radius");
 
-  // --- Form interactivity ---
-
+  // Form interactivity
   hobbyInput.addEventListener("blur", () => {
     if (hobbyInput.value.trim() !== "") {
-      new bootstrap.Collapse(document.getElementById("collapsePreference"), { toggle: true });
+      new bootstrap.Collapse(document.getElementById("collapsePreference"), {
+        toggle: true,
+      });
     }
   });
 
   indoorOutdoor.addEventListener("change", () => {
-    new bootstrap.Collapse(document.getElementById("collapseRadius"), { toggle: true });
+    new bootstrap.Collapse(document.getElementById("collapseRadius"), {
+      toggle: true,
+    });
   });
 
-  // --- Search form submission ---
-
+  // Search form submission
   document.getElementById("searchForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Clear all markers except the user marker
     markers.forEach((m) => m.setMap(null));
     markers = [];
 
@@ -75,22 +76,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const hobby = hobbyInput.value.trim();
+    const category = document.getElementById("categorySelect").value;
     const preference = indoorOutdoor.value;
     const radiusMiles = parseInt(radiusInput.value);
     const radiusMeters = radiusMiles * 1609.34;
 
-    if (!hobby || !radiusMiles || isNaN(radiusMiles)) {
-      alert("Please complete all fields before searching.");
+    if ((!hobby && !category) || !radiusMiles || isNaN(radiusMiles)) {
+      alert("Please provide either a hobby or a category, and specify distance.");
       return;
     }
 
-    let keyword = hobby;
-    if (preference === "indoor") {
-      keyword += " indoor club";
-    } else if (preference === "outdoor") {
-      keyword += " outdoor club";
+    let keyword = "";
+
+    if (hobby) {
+      keyword = hobby;
+      if (preference === "indoor") keyword += " indoor club";
+      else if (preference === "outdoor") keyword += " outdoor club";
+      else keyword += " club";
     } else {
-      keyword += " club";
+      const categoryKeywords = {
+        sports: "sports club",
+        crafting: "crafts club",
+        music: "music group",
+        gaming: "gaming club",
+        social: "community group",
+        outdoors: "outdoor adventure club",
+      };
+      keyword = categoryKeywords[category] || "hobby club";
     }
 
     const service = new google.maps.places.PlacesService(map);
@@ -130,9 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const serviceDetails = new google.maps.places.PlacesService(map);
 
         serviceDetails.getDetails({ placeId: place.place_id }, (details, status) => {
-          const websiteUrl = (status === google.maps.places.PlacesServiceStatus.OK && details.website)
-            ? details.website
-            : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name)}`;
+          const websiteUrl =
+            status === google.maps.places.PlacesServiceStatus.OK && details.website
+              ? details.website
+              : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name)}`;
 
           const photoUrl =
             place.photos && place.photos.length
@@ -149,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           const card = `
-            <div class="carousel-item${carouselInner.children.length === 0 ? ' active' : ''}">
+            <div class="carousel-item${carouselInner.children.length === 0 ? " active" : ""}">
               <div class="result-card d-flex flex-row align-items-center">
                 <div class="image-wrapper flex-shrink-0">
                   <img src="${photoUrl}" alt="${place.name} image" class="result-img" />
@@ -167,7 +180,10 @@ document.addEventListener("DOMContentLoaded", () => {
           carouselInner.insertAdjacentHTML("beforeend", card);
 
           if (carouselInner.children.length === 1) {
-            document.getElementById("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+            document.getElementById("resultsCarouselWrapper").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
           }
 
           const infoWindow = new google.maps.InfoWindow({
@@ -190,8 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Accordion styling and icon injection ---
-
+  // Accordion styling
   function styleAccordionItem(accordionItem, bgColor, textColor, imgUrl) {
     const button = accordionItem.querySelector(".accordion-button");
     const body = accordionItem.querySelector(".accordion-body");
@@ -234,7 +249,6 @@ document.addEventListener("DOMContentLoaded", () => {
       img.style.objectFit = "cover";
       img.style.borderRadius = "8px";
       img.style.marginRight = "10px";
-
       body.insertBefore(img, label);
     }
     img.src = imgUrl;
@@ -251,16 +265,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const accordionItems = document.querySelectorAll(".accordion-item");
-  styleAccordionItem(accordionItems[0], "#6a1b9a", "#ffffff", "assets/images/icons/hobby.png");
-  styleAccordionItem(accordionItems[1], "#6a1b9a", "#ffffff", "assets/images/icons/location.png");
-  styleAccordionItem(accordionItems[2], "#6a1b9a", "#ffffff", "assets/images/icons/distance.png");
+  styleAccordionItem(
+    accordionItems[0],
+    "#6a1b9a",
+    "#ffffff",
+    "assets/images/icons/hobby.png"
+  );
+  styleAccordionItem(
+    accordionItems[1],
+    "#6a1b9a",
+    "#ffffff",
+    "assets/images/icons/location.png"
+  );
+  styleAccordionItem(
+    accordionItems[2],
+    "#6a1b9a",
+    "#ffffff",
+    "assets/images/icons/distance.png"
+  );
 
   styleAccordionItem(
-  accordionItems[3],
-  "#6a1b9a",           // same purple background color for consistency
-  "#ffffff",           // white text color
-  "assets/images/icons/category.png"  // new icon for category search
-  
-);
-
+    accordionItems[3],
+    "#6a1b9a", // same purple background color for consistency
+    "#ffffff", // white text color
+    "assets/images/icons/category.png" // new icon for category search
+  );
 });
