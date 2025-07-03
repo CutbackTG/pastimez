@@ -155,10 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const radiusMeters = radiusMiles * 1609.34;
 
-    const bounds = new google.maps.LatLngBounds();
-      results.forEach((place) => bounds.extend(place.geometry.location));
-      map.fitBounds(bounds);
-
     // Build keyword string
     let keyword = "";
     if (hobby) {

@@ -144,8 +144,8 @@ nav {
 
 /* Image container */
 .image-wrapper {
-  flex-basis: 40%;
-  max-width: 40%;
+  flex-basis: 50%;
+  max-width: 50%;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -243,4 +243,17 @@ nav {
   font-size: 160%;
   padding: 5%;
   color: #6a1b9a;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #6a1b9a;
+  border-radius: 4px;
+}
+
+.result-card:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s ease-in-out;
 }
