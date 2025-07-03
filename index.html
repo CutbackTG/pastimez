@@ -21,24 +21,40 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="assets/images/logo/pastimez-logo.PNG" alt="Pastimez Logo" id="pastimez-logo">
-      </a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link text-purple" href="#searchFormContainer">Search</a></li>
-          <li class="nav-item"><a class="nav-link text-purple" href="#footerSocials">Socials</a></li>
-        </ul>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top"
+    >
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="assets/images/logo/pastimez-logo.PNG"
+            alt="Pastimez Logo"
+            id="pastimez-logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-purple" href="#searchFormContainer"
+                >Search</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-purple" href="#footerSocials">Socials</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
     <header class="opening text-center container-fluid">
       <p>
@@ -53,7 +69,7 @@
       </p>
     </header>
 
-  <!-- Hero Carousel -->
+    <!-- Hero Carousel -->
     <div class="d-flex justify-content-center">
       <div
         id="carousel-indicators"
@@ -276,14 +292,20 @@
       </form>
 
       <div class="map-container d-flex justify-content-center">
-        <div id="map" class="hobby-map" style="height: 500px; width: 100%;" loading="lazy" allowfullscreen></div>
+        <div
+          id="map"
+          class="hobby-map"
+          style="height: 500px; width: 100%"
+          loading="lazy"
+          allowfullscreen
+        ></div>
       </div>
 
       <div id="resultsCarouselWrapper" class="hobby-map">
         <h2 class="heading-2 text-center">Clubs near you</h2>
         <div
           id="resultsCarousel"
-          class="carousel slide"
+          class="carousel slide d-flex justify-content-center"
           data-bs-ride="carousel"
         >
           <div id="carouselInner" class="results-carousel-inner"></div>

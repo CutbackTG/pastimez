@@ -14,13 +14,6 @@ body {
   width: 100%;
 }
 
-#pastimez-logo {
-  width: 300px;
-  max-width: 400px;
-  height: auto;
-  position: relative;
-}
-
 /* Navbar */
 .text-purple { color: #6a1b9a !important; }
 .navbar { border-bottom: 3px solid #6a1b9a; }
@@ -125,7 +118,7 @@ body {
   padding: 1rem;
   max-width: 700px;
   margin: 0 auto;
-  background: rgb(241, 241, 241);
+  background: rgba(199, 199, 199, 0.764);
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
 }
 
@@ -252,30 +245,4 @@ body {
   color: #dc3545;
   font-size: 0.875rem;
   margin-top: 0.25rem;
-}
-
-/* New styles for centered carousel with peek effect */
-#resultsCarouselWrapper {
-  overflow: visible; /* allow partial overflow */
-  padding: 0 10px;   /* side padding for peeking neighbors */
-}
-
-.results-carousel-inner {
-  gap: 10px;               /* spacing between items */
-  overflow: visible !important;
-}
-
-.carousel-item {
-  flex: 0 0 60%;          /* width 50% of carousel */
-  transition: transform 0.5s ease;
-  opacity: 0.5;           /* dim non-active items */
-  transform: scale(0.85);
-  pointer-events: none;   /* disable clicks on non-active */
-}
-
-.carousel-item.active {
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: auto;   /* enable clicks on active */
-  z-index: 10;
 }
