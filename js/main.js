@@ -39,11 +39,50 @@ window.initMap = function () {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  // DOM elements
   const hobbyInput = document.getElementById("hobbyInput");
   const indoorOutdoor = document.getElementById("indoorOutdoor");
   const radiusInput = document.getElementById("radius");
   const categorySelect = document.getElementById("categorySelect");
   const carouselInner = document.getElementById("carouselInner");
+  const tagContainer = document.getElementById("interest-tags");
+  const hobbyContainer = document.getElementById("hobby-results");
+  const hobbyWrapper = document.getElementById("hobby-results-wrapper");
+
+  // Interest tags and hobby list
+  const interests = ["Creative", "Tech", "Physical", "Social", "Nature", "Relaxing"];
+  const hobbies = [
+    {
+      name: "Painting",
+      tags: ["Creative"],
+      description: "Explore your creativity with colours and brushstrokes.",
+    },
+    {
+      name: "Coding",
+      tags: ["Tech"],
+      description: "Create websites, apps, or games while learning programming.",
+    },
+    {
+      name: "Hiking",
+      tags: ["Nature", "Physical"],
+      description: "Connect with nature and stay fit.",
+    },
+    {
+      name: "Chess",
+      tags: ["Relaxing", "Tech"],
+      description: "Sharpen your mind with this strategic board game.",
+    },
+    {
+      name: "Dancing",
+      tags: ["Physical", "Social"],
+      description: "Move to the rhythm and connect with others.",
+    },
+    {
+      name: "Photography",
+      tags: ["Creative", "Nature"],
+      description: "Capture moments and scenery artistically.",
+    },
+  ];
 
   document.addEventListener("DOMContentLoaded", () => {
     const interests = [
