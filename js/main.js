@@ -325,24 +325,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Apply accordion styling and set default visible accordion
-  styleAccordionItem(
-    document.getElementById("accordionSearch"),
-    "#8A2BE2",
-    "white",
-    "https://cdn-icons-png.flaticon.com/512/151/151767.png"
-  );
-  styleAccordionItem(
-    document.getElementById("accordionPreference"),
-    "#00BFFF",
-    "black",
-    "https://cdn-icons-png.flaticon.com/512/1164/1164954.png"
-  );
-  styleAccordionItem(
-    document.getElementById("accordionRadius"),
-    "#20B2AA",
-    "white",
-    "https://cdn-icons-png.flaticon.com/512/854/854878.png"
-  );
+styleAccordionItem(
+  document.getElementById("accordionSearch"),
+  "#8A2BE2",   // Purple background (your original)
+  "white",     // White text for contrast
+  "https://cdn-icons-png.flaticon.com/512/151/151767.png"
+);
+styleAccordionItem(
+  document.getElementById("accordionPreference"),
+  "#6A5ACD",   // Slate Blue (a softer purple-ish blue)
+  "white",
+  "https://cdn-icons-png.flaticon.com/512/1164/1164954.png"
+);
+styleAccordionItem(
+  document.getElementById("accordionRadius"),
+  "#483D8B",   // Dark Slate Blue (deep purple-blue)
+  "white",
+  "https://cdn-icons-png.flaticon.com/512/854/854878.png"
+);
 
   // Show search accordion by default, hide others
   new bootstrap.Collapse(document.getElementById("collapseSearch"), {
