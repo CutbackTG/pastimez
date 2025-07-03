@@ -1,0 +1,24 @@
+{
+  "name": "pastimez",
+  "version": "1.0.0",
+  "description": "A javaScript powered site using Google maps API to allow users to locate local hobby groups and clubs near them.",
+  "main": "index.js",
+  "scripts": {
+  "test": "jest"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CutbackTG/pastimez.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CutbackTG/pastimez/issues"
+  },
+  "homepage": "https://github.com/CutbackTG/pastimez#readme",
+  "devDependencies": {
+    "jest": "^30.0.4"
+  }
+}
+
