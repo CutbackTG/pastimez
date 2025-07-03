@@ -229,6 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hobby = hobbyInput.value.trim();
     const category = categorySelect.value;
     const preference = indoorOutdoor.value;
+    const radiusInput = document.getElementById("radius");
     const radiusVal = radiusInput.value.trim();
 
     let valid = true;

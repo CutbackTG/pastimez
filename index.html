@@ -281,6 +281,7 @@
                   id="radius"
                   name="radius"
                   class="form-control"
+                  placeholder="Radius in miles"
                   min="1"
                   max="50"
                 />
@@ -346,7 +347,25 @@
 
     <div class="space"></div>
 
-    <!-- footer element -->
+    <script src="js/main.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_BOqOK7jLCjPYx5Me_p1rCxQZtFHDNPw&libraries=places,geometry&callback=initMap">
+      async
+      defer
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JavaScript fontawesome kit -->
+    <script
+      src="https://kit.fontawesome.com/f84e35c3bf.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <!-- footer element -->
     <footer id="footerSocials">
       <ul id="social-networks" class="socials">
         <li>
@@ -387,23 +406,4 @@
         </li>
       </ul>
     </footer>
-
-    <script src="js/main.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_BOqOK7jLCjPYx5Me_p1rCxQZtFHDNPw&libraries=places,geometry&callback=initMap">
-      async
-      defer
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- JavaScript fontawesome kit -->
-    <script
-      src="https://kit.fontawesome.com/f84e35c3bf.js"
-      crossorigin="anonymous"
-    ></script>
-  </body>
 </html>
