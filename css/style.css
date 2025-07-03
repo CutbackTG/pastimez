@@ -25,17 +25,12 @@ body {
 }
 
 #menu {
-  font-size: 110%;
+  font-size: 1.2rem;
   letter-spacing: 4px;
   list-style-type: none;
   color: #6a1b9a;
-  padding: 0;
+  padding: 0 1rem;
   margin: 0;
-}
-
-/* Hide checkbox */
-#nav-toggle {
-  display: none;
 }
 
 .nav-toggle-label {
@@ -44,30 +39,8 @@ body {
   cursor: pointer;
 }
 
-#menu {
-  font-size: 120%;
-  letter-spacing: 4px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  list-style-type: none;
-  color: #6a1b9a;
-}
-
 #menu > li {
   margin-bottom: 0.5em;
-}
-
-#nav-toggle:checked ~ nav {
-  display: block;
-}
-
-#nav-toggle {
-  display: none;
-}
-
-.nav-toggle-label {
-  font-size: 2rem;
-  color: #6a1b9a;
 }
 
 .opening {
@@ -125,21 +98,24 @@ body {
   box-sizing: border-box;
 }
 
-#map {
-  height: 500px;
-  width: 100%;
-}
-
 .form-label {
   color: #000000;
 }
 
 .map-container {
-      border: 2px solid #6a1b9a;
-      padding: 10px;
-      background-color: #6a1b9a;
-      max-width: 700px;
-    }
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 2px solid #6a1b9a;
+  padding: 10px;
+  background-color: #6a1b9a;
+}
+
+#map {
+  height: 500px;
+  width: 100%;
+  border: 0;
+}
 
 /* Result card style */
 .result-card {
@@ -207,18 +183,6 @@ body {
 
 .carousel-control-next-icon {
   background-color: #6a1b9a;
-}
-
-.map-container {
-  width: 100%;
-  max-width: 1200px; /* optional max width */
-  margin: 0 auto;
-}
-
-#map {
-  height: 500px;
-  width: 100%; /* fills container */
-  border: 0;
 }
 
 /* Bootstrap button override for smaller size and black background */
@@ -326,4 +290,24 @@ body {
 
 #backToTopBtn:hover {
   background-color: #c632e0; /* Darker blue on hover */
+}
+
+@media (max-width: 768px) {
+  .image-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-wrapper {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .result-card {
+    flex-direction: column;
+  }
+
+  .nav-toggle-label {
+    font-size: 1.5rem;
+  }
 }
