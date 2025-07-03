@@ -207,7 +207,7 @@ body {
   padding-top: 20px;
 }
 
-#space {
+.space {
   height: 80px;
 }
 
@@ -245,4 +245,18 @@ body {
   color: #dc3545;
   font-size: 0.875rem;
   margin-top: 0.25rem;
+}
+
+#interest-tags .tag {
+  padding: 6px 12px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#interest-tags .tag.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
 }

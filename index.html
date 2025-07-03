@@ -158,7 +158,7 @@
                 aria-expanded="true"
                 aria-controls="collapseHobby"
               >
-                What hobby are you interested in?
+                What interests you?
               </button>
             </h2>
             <div
@@ -167,7 +167,9 @@
               aria-labelledby="headingHobby"
             >
               <div class="accordion-body">
-                <label for="hobbyInput">Hobby:</label>
+                <label for="hobbyInput"
+                  >Please type in a hobby or interest:</label
+                >
                 <input
                   type="text"
                   class="form-control"
@@ -329,9 +331,27 @@
           </button>
         </div>
       </div>
+
+      <div class="space"></div>
+
+      <section class="container my-5" id="hobby-discovery">
+        <h2 class="text-center mb-4">Discover Your Next Hobby</h2>
+        <div class="mb-3 text-center">
+          <label class="form-label">Select Your Interests:</label>
+          <div
+            id="interest-tags"
+            class="d-flex flex-wrap justify-content-center gap-2"
+          ></div>
+        </div>
+
+        <div
+          id="hobby-results"
+          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
+        ></div>
+      </section>
     </main>
 
-    <div id="space"></div>
+    <div class="space"></div>
 
     <!-- footer element -->
     <footer id="footerSocials">
