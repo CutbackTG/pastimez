@@ -94,6 +94,15 @@ body {
   padding: 20px;
 }
 
+#mainAccordion {
+  max-width: 90%;      /* Limit max width for better look on big screens */
+  margin: 10px auto;     /* Center it horizontally */
+  padding: 15px 20px;    /* Add some padding */
+  background-color: #ffffff; /* Your purple shade */
+  color: white;          /* White text for contrast */
+  font-size: 1.2rem;     /* Slightly bigger text */
+}
+
 #map {
   height: 500px;
   width: 100%;
