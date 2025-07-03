@@ -483,3 +483,22 @@ if (container) {
   container.style.color = "white";
   container.style.fontWeight = "800";
 }
+
+const backToTopBtn = document.getElementById("backToTopBtn");
+
+// Show button after scrolling down 100px
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+});
+
+// Smooth scroll back to top on click
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
