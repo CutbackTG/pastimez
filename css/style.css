@@ -98,9 +98,31 @@ body {
   max-width: 90%;      /* Limit max width for better look on big screens */
   margin: 10px auto;     /* Center it horizontally */
   padding: 15px 20px;    /* Add some padding */
-  background-color: #ffffff; /* Your purple shade */
+  background-color: #ffffff;
   color: white;          /* White text for contrast */
   font-size: 1.2rem;     /* Slightly bigger text */
+}
+
+.accordion-item {
+  display: flex;
+  margin: 10px auto; 
+  flex-direction: column;
+  max-width: 80%;
+  width: 100%;
+  background-color: #6a0dad;
+  box-sizing: border-box;
+  overflow: hidden;  /* prevent children from spilling out */
+}
+
+/* Input inside */
+#find-hobby-accordion input#hobbyInput {
+  flex: 1 1 auto;       /* grow and shrink within the container */
+  max-width: 100%;      /* never wider than the container */
+  min-width: 0;         /* prevents flexbox overflow issues */
+  padding: 0.5rem;
+  border: 1px solid rgb(2, 2, 2);
+  border-radius: 0.3rem;
+  box-sizing: border-box;
 }
 
 #map {
