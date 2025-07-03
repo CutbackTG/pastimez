@@ -119,14 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
     img.alt = "Icon related to step";
   }
 
-  // Helper to show validation error messages
-  function showError(input, message) {
-    let errorEl = document.createElement("div");
-    errorEl.className = "error-message text-danger small mt-1";
-    errorEl.textContent = message;
-    input.parentElement.appendChild(errorEl);
-  }
-
   // Event listeners for form interactivity
   hobbyInput.addEventListener("blur", () => {
     if (hobbyInput.value.trim() !== "") {
@@ -142,45 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Main form submission event with validation
+  // Main form submission event
   document.getElementById("searchForm").addEventListener("submit", (e) => {
     e.preventDefault();
-
-    // Remove previous error messages
-    document.querySelectorAll(".error-message").forEach((el) => el.remove());
-
-    const hobby = hobbyInput.value.trim();
-    const category = categorySelect.value;
-    const preference = indoorOutdoor.value;
-    const radiusVal = radiusInput.value.trim();
-
-    let valid = true;
-
-    // Validation 1: Require hobby OR category
-    if (!hobby && !category) {
-      showError(hobbyInput, "Please enter a hobby or select a category.");
-      showError(categorySelect, "Please enter a hobby or select a category.");
-      valid = false;
-    }
-
-    // Validation 2: Require indoor/outdoor preference
-    if (!preference) {
-      showError(indoorOutdoor, "Please select indoor or outdoor preference.");
-      valid = false;
-    }
-
-    // Validation 3: Radius must be empty or number between 1 and 50
-    if (radiusVal) {
-      const radiusNum = Number(radiusVal);
-      if (isNaN(radiusNum) || radiusNum < 1 || radiusNum > 50) {
-        showError(radiusInput, "Distance must be a number between 1 and 50.");
-        valid = false;
-      }
-    }
-
-    if (!valid) {
-      return; // Stop submission if invalid
-    }
 
     clearMarkers();
 
@@ -189,8 +145,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const radiusMiles = radiusVal ? parseInt(radiusVal) : 50; // Default to 50 if empty
-
+    const hobby = hobbyInput.value.trim();
+    const category = categorySelect.value;
+    const preference = indoorOutdoor.value;
+    const radiusMiles = parseInt(radiusInput.value);
+    if ((!hobby && !category) || !radiusMiles || isNaN(radiusMiles)) {
+      alert("Please provide either a hobby or a category, and specify distance.");
+      return;
+    }
     const radiusMeters = radiusMiles * 1609.34;
 
     // Build keyword string
@@ -268,90 +230,96 @@ document.addEventListener("DOMContentLoaded", () => {
             categoryLabel = "Crafting & Creativity";
             badgeColor = "bg-warning text-dark";
           } else if (/music/i.test(keyword)) {
-            categoryLabel = "Music & Performing Arts";
+            categoryLabel = "Music";
             badgeColor = "bg-info text-white";
           } else if (/gaming/i.test(keyword)) {
             categoryLabel = "Gaming";
             badgeColor = "bg-danger";
           } else if (/social|community/i.test(keyword)) {
-            categoryLabel = "Social & Community";
+            categoryLabel = "Social";
             badgeColor = "bg-secondary";
           } else if (/outdoor/i.test(keyword)) {
-            categoryLabel = "Outdoor Activities";
-            badgeColor = "bg-dark";
+            categoryLabel = "Outdoors";
+            badgeColor = "bg-success";
           }
 
-          // Add to carousel
-          const activeClass = index === 0 ? "active" : "";
-          carouselInner.innerHTML += `
-            <div class="carousel-item ${activeClass}">
-              <div class="d-flex flex-column flex-sm-row align-items-center">
-                <img src="${photoUrl}" alt="${place.name}" class="d-block me-sm-3 mb-3 mb-sm-0" style="max-width: 300px; height: auto; border-radius: 8px;">
-                <div>
-                  <h5>${place.name}</h5>
-                  <p>${place.vicinity || place.formatted_address || ""}</p>
-                  <span class="badge ${badgeColor}">${categoryLabel}</span>
-                  <br />
-                  <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer">Visit website</a>
+          const card = `
+            <div class="carousel-item${index === 0 ? " active" : ""}">
+              <div class="result-card d-flex flex-row align-items-center">
+                <div class="image-wrapper flex-shrink-0">
+                  <img src="${photoUrl}" alt="${place.name} image" class="result-img" />
+                </div>
+                <div class="content-wrapper px-3">
+                  <span class="badge ${badgeColor} category-badge">${categoryLabel}</span>
+                  <h3 class="result-title mt-2">${place.name}</h3>
+                  <p class="result-description">${place.vicinity || "Address not available"}</p>
+                  <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">Visit Website</a>
                 </div>
               </div>
-            </div>`;
+            </div>
+          `;
 
-          // Add click listener for marker info window
+          carouselInner.insertAdjacentHTML("beforeend", card);
+
+          if (index === 0) {
+            document.getElementById("resultsCarouselWrapper").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+
+          const infoWindow = new google.maps.InfoWindow({
+            content: `
+              <div style="max-width: 400px;">
+                <strong>${place.name}</strong><br/>
+                ${place.vicinity || ""}<br/>
+                <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer">Website</a>
+              </div>
+            `,
+          });
+
           marker.addListener("click", () => {
             if (activeInfoWindow) activeInfoWindow.close();
-
-            const contentString = `
-              <div>
-                <h6>${place.name}</h6>
-                <p>${place.vicinity || place.formatted_address || ""}</p>
-                <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer">Visit website</a>
-              </div>`;
-
-            activeInfoWindow = new google.maps.InfoWindow({
-              content: contentString,
-            });
-            activeInfoWindow.open(map, marker);
+            infoWindow.open(map, marker);
+            activeInfoWindow = infoWindow;
           });
         });
       });
-
-      // Show carousel if hidden
-      const carouselElement = document.getElementById("carouselExampleControls");
-      if (carouselElement) {
-        carouselElement.style.display = "block";
-      }
     });
   });
 
-  // Apply accordion styling and set default visible accordion
-styleAccordionItem(
-  document.getElementById("accordionSearch"),
-  "#8A2BE2",   // Purple background (your original)
-  "white",     // White text for contrast
-  "https://cdn-icons-png.flaticon.com/512/151/151767.png"
-);
-styleAccordionItem(
-  document.getElementById("accordionPreference"),
-  "#6A5ACD",   // Slate Blue (a softer purple-ish blue)
-  "white",
-  "https://cdn-icons-png.flaticon.com/512/1164/1164954.png"
-);
-styleAccordionItem(
-  document.getElementById("accordionRadius"),
-  "#483D8B",   // Dark Slate Blue (deep purple-blue)
-  "white",
-  "https://cdn-icons-png.flaticon.com/512/854/854878.png"
-);
+  // Apply accordion styling
+  const accordionItems = document.querySelectorAll(".accordion-item");
+  const basePurple = "#6a1b9a";
 
-  // Show search accordion by default, hide others
-  new bootstrap.Collapse(document.getElementById("collapseSearch"), {
-    toggle: true,
+  accordionItems.forEach((item, i) => {
+    let imgUrl = "";
+    switch (i) {
+      case 0:
+        imgUrl = "assets/images/icons/hobby.png";
+        break;
+      case 1:
+        imgUrl = "assets/images/icons/location.png";
+        break;
+      case 2:
+        imgUrl = "assets/images/icons/distance.png";
+        break;
+      case 3:
+        imgUrl = "assets/images/icons/category.png";
+        break;
+    }
+    styleAccordionItem(item, basePurple, "#ffffff", imgUrl);
   });
-  new bootstrap.Collapse(document.getElementById("collapsePreference"), {
-    toggle: false,
-  });
-  new bootstrap.Collapse(document.getElementById("collapseRadius"), {
-    toggle: false,
-  });
+
+  // Fix container styles - corrected border and fontWeight
+  const container = document.querySelector(".opening");
+  if (container) {
+    container.style.borderWidth = "4px";
+    container.style.borderStyle = "solid";
+    container.style.borderColor = basePurple;
+    container.style.padding = "20px";
+    container.style.backgroundColor = basePurple;
+    container.style.color = "white";
+    container.style.fontWeight = "800";
+  }
 });

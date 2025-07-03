@@ -131,19 +131,22 @@ body {
 
 /* Image container */
 .image-wrapper {
-  flex-basis: 50%;
-  max-width: 50%;
+  flex-shrink: 0;
+  width: 300px; /* fixed width matching image size */
+  height: 200px;
   overflow: hidden;
   border-radius: 8px;
+  position: relative;
 }
 
 .result-img {
   width: 100%;
-  height: 200px;
-  display: block;
+  height: 100%;
   object-fit: cover;
+  display: block;
   border-radius: 8px;
 }
+
 
 /* Content area */
 .content-wrapper {
@@ -254,18 +257,16 @@ body {
 /* New styles for centered carousel with peek effect */
 #resultsCarouselWrapper {
   overflow: visible; /* allow partial overflow */
-  padding: 0 60px;   /* side padding for peeking neighbors */
+  padding: 0 10px;   /* side padding for peeking neighbors */
 }
 
-.carousel-inner {
-  display: flex;
-  justify-content: center; /* center carousel items */
-  gap: 15px;               /* spacing between items */
+.results-carousel-inner {
+  gap: 10px;               /* spacing between items */
   overflow: visible !important;
 }
 
 .carousel-item {
-  flex: 0 0 70%;          /* width 70% of carousel */
+  flex: 0 0 60%;          /* width 50% of carousel */
   transition: transform 0.5s ease;
   opacity: 0.5;           /* dim non-active items */
   transform: scale(0.85);
