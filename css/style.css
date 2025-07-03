@@ -7,6 +7,7 @@ body {
   color: #6a1b9a;
   font-family: "Arial", sans-serif;
   padding: 20px;
+  padding-top: 100px;
 }
 
 .carousel-hobbies {
@@ -20,28 +21,10 @@ body {
   position: relative;
 }
 
-/* Header */
-header {
-  padding: 0 2rem;
-  z-index: 99;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline; /* baseline to center is better for nav */
-  height: 100px; /* Define header height */
-  background: white;
-  position: relative;
-}
-
 /* Navbar */
-nav {
-  background-color: #ffffff;
-  width: 10%;
-  left: 0;
-  top: 80px; /* Right below header */
-  display: none;
-  z-index: 100;
-}
+.text-purple { color: #6a1b9a !important; }
+.navbar { border-bottom: 3px solid #6a1b9a; }
+#pastimez-logo { width: 200px; max-width: 300px; height: auto; }
 
 /* Show nav on toggle */
 #nav-toggle:checked ~ nav {
@@ -68,7 +51,6 @@ nav {
   cursor: pointer;
 }
 
-
 #menu {
   font-size: 120%;
   letter-spacing: 4px;
@@ -93,6 +75,11 @@ nav {
 .nav-toggle-label {
   font-size: 2rem;
   color: #6a1b9a;
+}
+
+.opening {
+  max-width: 100%; margin: 0 auto; padding: 2rem;
+  border: 4px solid #6a1b9a; background: #6a1b9a; color: #fff; font-weight: 800;
 }
 
 .heading-2 {

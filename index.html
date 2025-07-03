@@ -21,40 +21,39 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header>
-      <h1 id="text-logo" class="logo"></h1>
-      <img
-        id="pastimez-logo"
-        src="assets/images/logo/pastimez-logo.PNG"
-        width="300px"
-        max-width="400px"
-      />
-      <input type="checkbox" id="nav-toggle" name="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label">
-        <i class="fa-solid fa-bars"></i>
-      </label>
 
-      <nav>
-        <ul id="menu">
-          <li><a href="#searchFormContainer">Search</a></li>
-          <li><a href="#footerSocials">Socials</a></li>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/images/logo/pastimez-logo.PNG" alt="Pastimez Logo" id="pastimez-logo">
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-purple" href="#searchFormContainer">Search</a></li>
+          <li class="nav-item"><a class="nav-link text-purple" href="#footerSocials">Socials</a></li>
         </ul>
-      </nav>
-    </header>
+      </div>
+    </div>
+  </nav>
 
-    <div class="opening text-center container-fluid">
+    <header class="opening text-center container-fluid">
       <p>
-        "Whether you're looking to discover new hobbies, join local clubs, or
+        Whether you're looking to discover new hobbies, join local clubs, or
         connect with like-minded people nearby, you've come to the right place.
         <br />
         Simply tell us what interests you, choose your preferences, and find fun
         activities and groups in your area
         <br />
         <br />
-        Let's get started on your next great adventure!"
+        Let's get started on your next great adventure!
       </p>
-    </div>
+    </header>
 
+  <!-- Hero Carousel -->
     <div class="d-flex justify-content-center">
       <div
         id="carousel-indicators"
