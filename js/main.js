@@ -49,151 +49,78 @@ document.addEventListener("DOMContentLoaded", () => {
   const hobbyContainer = document.getElementById("hobby-results");
   const hobbyWrapper = document.getElementById("hobby-results-wrapper");
 
-  // Interest tags and hobby list
   const interests = ["Creative", "Tech", "Physical", "Social", "Nature", "Relaxing"];
   const hobbies = [
-    {
-      name: "Painting",
-      tags: ["Creative"],
-      description: "Explore your creativity with colours and brushstrokes.",
-    },
-    {
-      name: "Coding",
-      tags: ["Tech"],
-      description: "Create websites, apps, or games while learning programming.",
-    },
-    {
-      name: "Hiking",
-      tags: ["Nature", "Physical"],
-      description: "Connect with nature and stay fit.",
-    },
-    {
-      name: "Chess",
-      tags: ["Relaxing", "Tech"],
-      description: "Sharpen your mind with this strategic board game.",
-    },
-    {
-      name: "Dancing",
-      tags: ["Physical", "Social"],
-      description: "Move to the rhythm and connect with others.",
-    },
-    {
-      name: "Photography",
-      tags: ["Creative", "Nature"],
-      description: "Capture moments and scenery artistically.",
-    },
+    { name: "Painting", tags: ["Creative"], description: "Explore your creativity with colours and brushstrokes." },
+    { name: "Coding", tags: ["Tech"], description: "Create websites, apps, or games while learning programming." },
+    { name: "Hiking", tags: ["Nature", "Physical"], description: "Connect with nature and stay fit." },
+    { name: "Chess", tags: ["Relaxing", "Tech"], description: "Sharpen your mind with this strategic board game." },
+    { name: "Dancing", tags: ["Physical", "Social"], description: "Move to the rhythm and connect with others." },
+    { name: "Photography", tags: ["Creative", "Nature"], description: "Capture moments and scenery artistically." },
+    // Add more as needed
   ];
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const interests = [
-      "Creative",
-      "Tech",
-      "Physical",
-      "Social",
-      "Nature",
-      "Relaxing",
-    ];
-    const hobbies = [
-      {
-        name: "Painting",
-        tags: ["Creative"],
-        description: "Explore your creativity with colours and brushstrokes.",
-      },
-      {
-        name: "Coding",
-        tags: ["Tech"],
-        description:
-          "Create websites, apps, or games while learning programming.",
-      },
-      {
-        name: "Hiking",
-        tags: ["Nature", "Physical"],
-        description: "Connect with nature and stay fit.",
-      },
-      {
-        name: "Chess",
-        tags: ["Relaxing", "Tech"],
-        description: "Sharpen your mind with this strategic board game.",
-      },
-      {
-        name: "Dancing",
-        tags: ["Physical", "Social"],
-        description: "Move to the rhythm and connect with others.",
-      },
-      {
-        name: "Photography",
-        tags: ["Creative", "Nature"],
-        description: "Capture moments and scenery artistically.",
-      },
-      // Add more as needed
-    ];
-
-    const tagContainer = document.getElementById("interest-tags");
-    const hobbyContainer = document.getElementById("hobby-results");
-
-    // Render tags
-    interests.forEach((interest) => {
-      const tag = document.createElement("span");
-      tag.className = "tag";
-      tag.textContent = interest;
-      tag.onclick = () => {
-        tag.classList.toggle("active");
-        updateResults();
-      };
-      tagContainer.appendChild(tag);
-    });
-
-    function updateResults() {
-      const activeTags = [...document.querySelectorAll(".tag.active")].map(
-        (tag) => tag.textContent
-      );
-      hobbyContainer.innerHTML = "";
-
-      if (activeTags.length === 0) {
-        hobbyContainer.style.display = "none"; // hide results
-        return;
-      }
-
-      const filtered = hobbies.filter((hobby) =>
-        hobby.tags.some((tag) => activeTags.includes(tag))
-      );
-
-      hobbyContainer.style.display = "flex"; // show results
-
-      if (filtered.length === 0) {
-        hobbyContainer.innerHTML =
-          "<p class='text-center'>No hobbies match your selected interests.</p>";
-        return;
-      }
-
-      filtered.forEach((hobby) => {
-        const col = document.createElement("div");
-        col.className = "col";
-
-        const card = document.createElement("div");
-        card.className = "card h-100 shadow-sm";
-
-        const body = document.createElement("div");
-        body.className = "card-body";
-
-        const title = document.createElement("h5");
-        title.className = "card-title";
-        title.textContent = hobby.name;
-
-        const desc = document.createElement("p");
-        desc.className = "card-text";
-        desc.textContent = hobby.description;
-
-        body.appendChild(title);
-        body.appendChild(desc);
-        card.appendChild(body);
-        col.appendChild(card);
-        hobbyContainer.appendChild(col);
-      });
-    }
-
-    updateResults(); // initial render
+  // Render tags
+  interests.forEach(interest => {
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = interest;
+    tag.onclick = () => {
+      tag.classList.toggle("active");
+      updateResults();
+    };
+    tagContainer.appendChild(tag);
   });
+
+  function updateResults() {
+  const activeTags = [...document.querySelectorAll(".tag.active")].map(tag => tag.textContent);
+  hobbyContainer.innerHTML = "";
+
+  if (activeTags.length === 0) {
+    hobbyContainer.style.display = "none"; // hide results
+    return;
+  }
+
+  const filtered = hobbies.filter(hobby =>
+    hobby.tags.some(tag => activeTags.includes(tag))
+  );
+
+  hobbyContainer.style.display = "flex"; // show results
+
+  if (filtered.length === 0) {
+    hobbyContainer.innerHTML = "<p class='text-center'>No hobbies match your selected interests.</p>";
+    return;
+  }
+
+  filtered.forEach(hobby => {
+    const col = document.createElement("div");
+    col.className = "col";
+
+    const card = document.createElement("div");
+    card.className = "card h-100 shadow-sm";
+
+    const body = document.createElement("div");
+    body.className = "card-body";
+
+    const title = document.createElement("h5");
+    title.className = "card-title";
+    title.textContent = hobby.name;
+
+    const desc = document.createElement("p");
+    desc.className = "card-text";
+    desc.textContent = hobby.description;
+
+    body.appendChild(title);
+    body.appendChild(desc);
+    card.appendChild(body);
+    col.appendChild(card);
+    hobbyContainer.appendChild(col);
+  });
+}
+
+
+  updateResults(); // initial render
+});
 
   // Utility: Clear all markers except userMarker
   function clearMarkers() {
@@ -519,6 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fix container styles - corrected border and fontWeight
   const container = document.querySelector(".opening");
   if (container) {
+
     container.style.borderWidth = "4px";
     container.style.borderStyle = "solid";
     container.style.borderColor = basePurple;
@@ -527,4 +455,3 @@ document.addEventListener("DOMContentLoaded", () => {
     container.style.color = "white";
     container.style.fontWeight = "800";
   }
-});
