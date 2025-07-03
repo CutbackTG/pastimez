@@ -290,6 +290,12 @@ document.getElementById("searchForm").addEventListener("submit", (e) => {
     return; // Stop submission if invalid
   }
 
+  // Scroll smoothly to the map container
+  const mapElement = document.getElementById("map");
+  if (mapElement) {
+    mapElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   clearMarkers();
 
   if (!userLocation) {
