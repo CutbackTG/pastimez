@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   interests.forEach((interest) => {
     const tag = document.createElement("span");
-    tag.className = "tag";
+    tag.className = "tag active"; // Add 'active' class here
     tag.textContent = interest;
     tag.onclick = () => {
       tag.classList.toggle("active");
@@ -717,7 +717,7 @@ function loadDefaultNearbyHobbies(location) {
 
   const request = {
     location: location,
-    radius: 10000,
+    radius: 100,
     keyword: "hobby club OR activities OR classes OR sports",
   };
 
@@ -727,7 +727,6 @@ function loadDefaultNearbyHobbies(location) {
       results.length > 0
     ) {
       populateDiscoverMore(results);
-      initMap(location, results); // Optional if you want to show them on the map too
     }
   });
 }
@@ -736,7 +735,7 @@ function populateDiscoverMore(results) {
   const hobbyContainer = document.getElementById("hobby-results");
   hobbyContainer.innerHTML = "";
 
-  results.slice(0, 20).forEach((place) => {
+  results.slice(0, 12).forEach((place) => {
     const photoUrl =
       place.photos && place.photos.length
         ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 })
@@ -774,3 +773,87 @@ function populateDiscoverMore(results) {
     hobbyContainer.appendChild(col);
   });
 }
+
+// Accordion styling with purple theme and icons
+function lightenHexColor(hex, factor) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+
+  const nr = Math.min(255, Math.floor(r + (255 - r) * factor));
+  const ng = Math.min(255, Math.floor(g + (255 - g) * factor));
+  const nb = Math.min(255, Math.floor(b + (255 - b) * factor));
+
+  return `rgb(${nr}, ${ng}, ${nb})`;
+}
+
+function styleAccordionItem(accordionItem, bgColor, textColor, imgUrl) {
+  const button = accordionItem.querySelector(".accordion-button");
+  const body = accordionItem.querySelector(".accordion-body");
+
+  button.style.backgroundColor = bgColor;
+  button.style.color = textColor;
+  button.style.fontWeight = "700";
+  button.style.borderRadius = "0.5rem";
+  button.style.border = "none";
+
+  body.style.display = "flex";
+  body.style.alignItems = "center";
+  body.style.gap = "20px";
+  body.style.backgroundColor = lightenHexColor(bgColor, 0.7);
+  body.style.padding = "1rem";
+  body.style.borderRadius = "0 0 0.5rem 0.5rem";
+
+  const label = body.querySelector("label");
+  const input = body.querySelector("input, select");
+
+  if (label) {
+    label.style.flex = "1 0 30%";
+    label.style.marginBottom = "0";
+    label.style.color = textColor;
+    label.style.fontWeight = "600";
+  }
+
+  if (input) {
+    input.style.flex = "1 0 70%";
+    input.style.maxWidth = "400px";
+    input.style.width = "100%";
+    input.style.padding = "0.5rem";
+    input.style.border = `1px solid ${textColor}`;
+    input.style.borderRadius = "0.3rem";
+    input.style.boxSizing = "border-box";
+  }
+
+  let img = accordionItem.querySelector(".accordion-image");
+  if (!img) {
+    img = document.createElement("img");
+    img.classList.add("accordion-image");
+    img.style.width = "60px";
+    img.style.height = "60px";
+    img.style.objectFit = "cover";
+    img.style.borderRadius = "8px";
+    img.style.marginRight = "10px";
+    body.insertBefore(img, label);
+  }
+  img.src = imgUrl;
+  img.alt = "Icon related to step";
+}
+
+accordionItems.forEach((item, i) => {
+  let imgUrl = "";
+  switch (i) {
+    case 0:
+      imgUrl = "assets/images/icons/hobby.png";
+      break;
+    case 1:
+      imgUrl = "assets/images/icons/location.png";
+      break;
+    case 2:
+      imgUrl = "assets/images/icons/distance.png";
+      break;
+    case 3:
+      imgUrl = "assets/images/icons/category.png";
+      break;
+  }
+  styleAccordionItem(item, basePurple, "#ffffff", imgUrl);
+});
