@@ -40,9 +40,29 @@ Interactive Social media links ready for linking to target social media accounts
 
 **Landing section & About**
 
+The Pastimez site opens on a visually branded interactive navigation bar and logo followed by our Hero image carousel that displays uplifting and inspirational images and the benefits of engaging in hobby activities to drive interest in the audience.
+
 <img src= assets/images/readme-images/landingpage-screenshot.png  alt ="Screenshot of the pastimez landing page" width= 800>
 
 <img src= assets/images/readme-images/landingpage-hero-carousel.png  alt ="Screenshot of the pastimez hero image carousel" width= 800>
+
+Below this the user flows into the our search form for our interactive hobby finder with questions to aid the search including their interests or hobby choice, (or search by category), whether they prefer indoor or outdoor activities and their search radius in miles (or how far they are willing to travel.)
+
+<img src= assets/images/readme-images/searchform-screenshot1.png  alt ="Screenshot of the pastimez search form" width= 800>
+
+<img src= assets/images/readme-images/searchform-screenshot2.png  alt ="Screenshot of the pastimez search form with fields open" width= 800>
+
+Once submitted and validation checks have run, the user is presented with a google map of pinned local clubs and societies that meet their search options. Details and website links for these clubs are also displayed below the map in a card carousel for easier reading.
+
+<img src= assets/images/readme-images/map-results-pins.png  alt ="Screenshot of the pastimez google map results" width= 800>
+
+<img src= assets/images/readme-images/carousel-results.png  alt ="Screenshot of the results carousel" width= 800>
+
+Further down users can Discover other local hobby clubs and societies that they may not have considered in their search criteria, if fully functional this section would run independant of the search form and allow browing and hobby discovery.
+
+And lastly below this is an interactive social media footer with links to our social media pages.
+
+<img src= assets/images/readme-images/footer-interactive-socialmedia.png  alt ="Screenshot of the pastimez social media footer" width= 800>
 
 # User Experience (UX)
 
