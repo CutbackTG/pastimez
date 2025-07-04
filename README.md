@@ -10,6 +10,7 @@ A javaScript powered site using Google maps API to allow users to locate local h
 
 # Website Purpose
 
+The purpose of this website project is to empower its users to build local community and social relationships, nurture healthy habits for both their physical fitness and mental health and raise local awareness for hobby and interest groups in communities.
 
 # Links
 
@@ -18,6 +19,12 @@ A javaScript powered site using Google maps API to allow users to locate local h
 
 # Features
 
+Pastimez features an interactive search form and google api driven map display for the user to search in their determined local radius for hobbies and interest clubs and societies.
+
+It also features (if fully realized) an expanded search for hobbies and interests that the user may not have considered in their local area.
+
+An interactive navigation bar that takes the user to the relevant page section and a return to top button.
+Interactive Social media links ready for linking to target social media accounts for Pastimez.
 
 # Technologies Used
 
