@@ -2,11 +2,11 @@ Project Two: Pastimez hobby finder
 ======================================
 **Author:** *Tyler Worth*
 
-<img src= assets/readme-images/responsive-pastimez.png  alt ="Pastimez Responsive Screens" width= 800>
+<img src= assets/images/readme-images/responsive-pastimez.png  alt ="Pastimez Responsive Screens" width= 800>
 
 # Project Description
 
-
+A javaScript powered site using Google maps API to allow users to locate local hobby groups and clubs near them.
 
 # Website Purpose
 
@@ -27,9 +27,15 @@ Project Two: Pastimez hobby finder
 - GitHub Pages: Hosting the live version of the project.
 - javaScript: for user interaction and advanced styling.
 - Bootstrap for useful containers, accordians and carousels.
+- Jest: For core functionality testing.
 
 # Website Walkthrough
 
+**Landing section & About**
+
+<img src= assets/images/readme-images/landingpage-screenshot.png  alt ="Screenshot of the pastimez landing page" width= 800>
+
+<img src= assets/images/readme-images/landingpage-hero-carousel.png  alt ="Screenshot of the pastimez hero image carousel" width= 800>
 
 # User Experience (UX)
 
