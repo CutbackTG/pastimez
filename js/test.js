@@ -60,3 +60,48 @@ describe('Map Marker Data', () => {
     expect(marker.position).toHaveProperty("lng");
   });
 });
+
+// utils.js
+function buildKeyword(hobby, preference, category) {
+  if (hobby) {
+    let keyword = hobby;
+    if (preference === "indoor") keyword += " indoor club";
+    else if (preference === "outdoor") keyword += " outdoor club";
+    else keyword += " club";
+    return keyword;
+  } else {
+    const categoryKeywords = {
+      sports: "sports club",
+      crafting: "crafts club",
+      music: "music group",
+      gaming: "gaming club",
+      social: "community group",
+      outdoors: "outdoor adventure club",
+    };
+    return categoryKeywords[category] || "hobby club";
+  }
+}
+
+module.exports = { buildKeyword };
+
+describe("buildKeyword", () => {
+  test("returns hobby with indoor preference", () => {
+    expect(buildKeyword("chess", "indoor", "sports")).toBe("chess indoor club");
+  });
+
+  test("returns hobby with outdoor preference", () => {
+    expect(buildKeyword("yoga", "outdoor", "sports")).toBe("yoga outdoor club");
+  });
+
+  test("returns hobby with no preference", () => {
+    expect(buildKeyword("painting", "", "crafting")).toBe("painting club");
+  });
+
+  test("returns category keyword when hobby is empty", () => {
+    expect(buildKeyword("", "", "music")).toBe("music group");
+  });
+
+  test("returns default hobby club when category not found", () => {
+    expect(buildKeyword("", "", "unknown")).toBe("hobby club");
+  });
+});
