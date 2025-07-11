@@ -240,6 +240,15 @@ Interest Tags Do Not Toggle Off
 Issue:
 Clicking an interest tag highlights it and filters results, but clicking the same tag again does not deselect or reset.
 
+**Test-driven Development (Jest testing)**
+
+<img src= assets/images/readme-images/jest-testing.png  alt ="Initial function testing with Jest" width= 800>
+
+In an effort to implement test-driven development on this project I ran some initial tests with jest (see test.js) to ensure that our basic functionality and data manipulation was working for our our search form.
+These tests allowed me to ensure that we were able to search by keywords and by category and also to fail tests when no inputs were added or when no matches were found.
+
+I also tested whether our map would generate the map marker on initialisation and further testing of our other search form options such as the indoor/ outdoor preference.
+
 **Solved Bugs:**
 
 
