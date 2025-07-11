@@ -163,7 +163,17 @@ The website will be designed in a super-clean and fresh mix of white #ffffff a c
 
 **Accessibility - Lighthouse Rating**
 
+<img src= assets/images/readme-images/lighthouse-rating.png  alt ="pastimez lighthouse rating" width= 800>
 
+I am pleasantly surprised with the site's lighthouse accessiblity ratings even though the performance score was unable to record due to me working on this project from a remote work location during the test.
+
+Points to note however are; 
+For accessibility - My navbar button does not have an accessible name and will just be screen read as button.
+
+<img src= assets/images/readme-images/navbar-button.png  alt ="navbar button not named" width= 800>
+
+For Best Practices - The site immediately asks to know your location on launch, this should be softened to request after validation of the search form so the user doesn't feel like they are giving up personal information first.
+I kept it in this state as I really wanted to be able to populate the Discover More section on launch but was unable to figure it out fully with this first effort.
 
 **Testing User Stories from User Experience (UX)**
 
