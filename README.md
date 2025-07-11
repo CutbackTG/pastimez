@@ -158,9 +158,8 @@ The website will be designed in a super-clean and fresh mix of white #ffffff a c
 
 <img src= assets/images/readme-images/hue-scheme.png  alt ="website colour scheme on Hue mint" width= 800>
 
+
 # Testing & Accessibility
-
-
 
 **Accessibility - Lighthouse Rating**
 
