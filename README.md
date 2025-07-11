@@ -199,8 +199,23 @@ User Story 4 – Alex (Returning Board Game Enthusiast)
 | **Fast, intuitive search**                     | Single-page app with a fast form and clear flow. No page reload needed.             | ✅    |
 
 
-**Bugs discovered**
+**Bugs Known**
 
+No Validation for Empty Keyword Input
+Issue:
+Clicking "Search" without entering a hobby or selecting a category triggers an unnecessary API call.
+
+This bug is caused by the option we have included for users to bypass the specific hobby search option by choosing from our predetermined categories, functionality is not affected and it is important for the user to have this natural option.
+
+* The next two bugs are linked to our experimental design in generating tags that would allow the user to sort through results in their area by hobby type, unfortunately I could not get this function to work without the user still doing the initial search and so it was simplified to simply show local results in the grid.
+
+Missing ARIA Labels on Interest Tag Buttons
+Issue:
+The generated interest buttons aren’t accessible to screen readers.
+
+Interest Tags Do Not Toggle Off
+Issue:
+Clicking an interest tag highlights it and filters results, but clicking the same tag again does not deselect or reset.
 
 **Solved Bugs:**
 
