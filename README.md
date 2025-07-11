@@ -253,6 +253,19 @@ I also tested whether our map would generate the map marker on initialisation an
 
 ![First bug - map not clearing markers](assets/images/readme-images/bugs/first-bug-map-not-clearing.png)
 
+My first bug arose during some initial testing of our Google maps API where on a series of local searches the map was not clearing each time and the drop points on the map just kept increasing with each search.
+
+This was solved with some lines to clear the markers for each search, keeping the map clear and easy to read.
+
+```const clearMarkers = () => {
+    markers.forEach((m) => m.setMap(null));
+    markers = [];
+    if (userMarker) {
+      userMarker.setMap(map);
+      markers.push(userMarker);
+    }
+  };```
+
 ![second bug - some of our elements were overlaying badly](assets/images/readme-images/bugs/second-bug-elements-overlaying.png)
 
 ![third bug - you are here icon clearing on search](assets/images/readme-images/bugs/third-bug-you-are-here-icon-clearing-on-search.png)
@@ -394,6 +407,7 @@ If you'd like to contribute to this project, feel free to fork the repository, m
 **Acknowledgements**
 
 Guidance: Special thanks to The Code Institute for their support in helping me build and refine this first project.
+Google for developing a fantastic range of API's for new developers to learn and all the guidance available on their website.
 
 # Code:
 
