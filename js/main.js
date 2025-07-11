@@ -210,6 +210,9 @@
             : null,
         tags: mapPlaceToTags(place),
       }));
+        if (place && place.vicinity) {
+          addressP.textContent = place.vicinity;
+        }
 
       renderDiscoverResults();
     });
@@ -230,6 +233,12 @@
             lng: pos.coords.longitude,
           };
           map.setCenter(userLocation);
+
+          if (!userLocation) {
+  alert("Location access denied. Please enable location to search nearby clubs.");
+  userLocation = { lat: 50.266, lng: -5.052 }; // fallback (Cornwall)
+}
+
 
           userMarker = new google.maps.Marker({
             position: userLocation,
