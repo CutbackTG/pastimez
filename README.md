@@ -137,8 +137,6 @@ Please visit section [Testing User stories from User Experience (UX)] for target
 
 # Design
 
-
-
 Typography
 The main font used throughout is the Arial font, a sans-serif font chosen for its modern design, readability and clean aesthetics with a fallback font of sans-serif if the user's browser fails to load Arial for any reason.
 
@@ -159,6 +157,17 @@ The design should also include social links in the footer for further social con
 
 
 **Testing User Stories from User Experience (UX)**
+
+User Story 1 – Ella (First-Year University Student)
+“As a first-year university student who just moved to a new city, I want to easily search for local book or D&D clubs, so that I can meet new people and join social activities around my interests.”
+
+| Acceptance Criterion                  | Evidence                                                                                                                                                                                          | Met?         |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| **Search by category**                | `<select id="categorySelect">` lets users pick a hobby category. JavaScript uses `categorySelect.value` to map to a keyword with `categoryKeywords`, then searches Google Places API accordingly. | ✅            |
+| **Results near the user**             | Uses `navigator.geolocation.getCurrentPosition` to set `userLocation`, which is passed to Google Maps `nearbySearch` to show results in a chosen radius.                                          | ✅            |
+| **Each result shows name & location** | Each result card includes the club name and address using `place.name` and `place.vicinity`.                                                                                                      | ✅            |
+| **Clickable contact / sign-up info**  | A "View on Google Maps" link is provided via `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, but no direct sign-up or contact integration yet.                                   | ⚠️ *Partial* |
+
 
 
 **Bugs discovered**
