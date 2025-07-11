@@ -264,17 +264,21 @@ This was solved with some lines to clear the markers for each search, keeping th
       userMarker.setMap(map);
       markers.push(userMarker);
     }
-  };```
+  };
+  ```
 
 ![second bug - some of our elements were overlaying badly](assets/images/readme-images/bugs/second-bug-elements-overlaying.png)
+![sixth bug - navbar styling](assets/images/readme-images/bugs/sixth-bug-navbar-styling.png)
+
+These two bugs I haver grouped together for this report as it was primarily created by my inexperience with using javaScript to manage layout and styling and so I often had difficulties in problem solving what section of js or css was causing layout issues (even though my css was kept to a minimum for this project).
 
 ![third bug - you are here icon clearing on search](assets/images/readme-images/bugs/third-bug-you-are-here-icon-clearing-on-search.png)
+
+This third bug was caused by our earlier fix for clearing our map markers after each search, unfortunately it would also clear our "Your are Here" icon for subsequent searches so a line or two was added to re-state this icon for user reference.
 
 ![fourth bug - when search button is clicked the site scrolls upwards](<assets/images/readme-images/bugs/fourth-bug-site scrollsup-on-search-button.png>)
 
 ![fifth bug - the fields for input allow too many characters](assets/images/readme-images/bugs/fifth-bug-input-fields-too-long.png)
-
-![sixth bug - navbar styling](assets/images/readme-images/bugs/sixth-bug-navbar-styling.png)
 
 ![seventh bug - results scroll up on mobile](assets/images/readme-images/bugs/seventh-bug-mobile-results-scroll-up.png)
 
