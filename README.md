@@ -70,18 +70,51 @@ And lastly below this is an interactive social media footer with links to our so
 
 **1. First-Time Visitor 1:**
 
+User story 1 - Ella, 19, University Student
+
+* As a first-year university student who just moved to a new city, I want to easily search for a local book or D&D club, so that I can meet new people and join social circles around my interests.
 
 **Acceptance Criteria**
 
+- The user can search for hobby clubs by category or more bespoke terms such as "D&D"
+
+- The platform displays clubs near the user's selected location.
+
+- Each result includes basic information: name, location and description of the club.
+
+- The user can click on a club to get contact or sign-up info.
 
 **2. First-Time Visitor 2:**
 
+User story 2 - Marcus, 37, a Chef with a Passion for Art
+
+* As a busy professional with limited free time, I want to find creative hobby clubs happening nearby during weekends, so that I can relax and enjoy my passion for painting without spending hours searching or phoning around.
 
 **Acceptance Criteria**
 
+- The user can filter search results by activity type and availability.
+
+- Clubs are displayed by proximity to the user or a chosen location.
+
+- Results include session times to help users find ones that match their schedule.
+
+- The interface is mobile-friendly for quick searching on the go.
 
 **3. First-time Visitor 3**
 
+User story 3 - Janet, 64, Recently retired
+
+* As a recently retired person with time to explore new hobbies, I want to browse a variety of clubs by interest, so that I can meet like-minded people.
+
+**Acceptance Criteria**
+
+- The user can browse clubs and societies by keywords or interests
+
+- Th eplatform returns multiple suggestions across different categories.
+
+- Each suggestion includes a short description and joining information.
+
+- The interface is accessible and easy to use for older users.
 
 Please visit section [Testing User stories from User Experience (UX)] for targeted testing to match these user defined requirements. 
 
