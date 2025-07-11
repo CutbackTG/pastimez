@@ -116,6 +116,23 @@ User story 3 - Janet, 64, Recently retired
 
 - The interface is accessible and easy to use for older users.
 
+**3. Returning Visitor**
+
+User story 4 - Alex, 28, Board game enthusiast
+
+* As a returning user who has already joined a local group, I wanted to check the platform regularly for new clubs and upcoming meetups, so that I can keep expanding my social circle and try new hobbies.
+
+**Acceptance Criteria**
+
+- The homepage highlights new or recently added clubs.
+
+- The user can save interests or categories for faster future searches.
+
+- There's an option to subscribe to notifications or updates for new clubs.
+
+- The search experience remains quick and intuitive with updated listings.
+
+
 Please visit section [Testing User stories from User Experience (UX)] for targeted testing to match these user defined requirements. 
 
 # Design
