@@ -251,6 +251,9 @@ I also tested whether our map would generate the map marker on initialisation an
 
 **Solved Bugs:**
 
+![First bug - map not clearing markers](assets/images/readme-images/bugs/first-bug-map-not-clearing.png)
+
+
 
 # Deployment
 
