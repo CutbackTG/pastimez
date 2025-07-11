@@ -62,7 +62,7 @@
     const input = body.querySelector("input, select");
 
     if (label) {
-      label.style.flex = "1 0 30%";
+      label.style.flex = "1 0 0%";
       label.style.marginBottom = "0";
       label.style.color = textColor;
       label.style.fontWeight = "600";
