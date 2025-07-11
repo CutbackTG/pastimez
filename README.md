@@ -253,7 +253,19 @@ I also tested whether our map would generate the map marker on initialisation an
 
 ![First bug - map not clearing markers](assets/images/readme-images/bugs/first-bug-map-not-clearing.png)
 
+![second bug - some of our elements were overlaying badly](assets/images/readme-images/bugs/second-bug-elements-overlaying.png)
 
+![third bug - you are here icon clearing on search](assets/images/readme-images/bugs/third-bug-you-are-here-icon-clearing-on-search.png)
+
+![fourth bug - when search button is clicked the site scrolls upwards](<assets/images/readme-images/bugs/fourth-bug-site scrollsup-on-search-button.png>)
+
+![fifth bug - the fields for input allow too many characters](assets/images/readme-images/bugs/fifth-bug-input-fields-too-long.png)
+
+![sixth bug - navbar styling](assets/images/readme-images/bugs/sixth-bug-navbar-styling.png)
+
+![seventh bug - results scroll up on mobile](assets/images/readme-images/bugs/seventh-bug-mobile-results-scroll-up.png)
+
+![eighth bug - result filters clear the cards](assets/images/readme-images/bugs/eighth-bug-results-filters-clear-cards.png)
 
 # Deployment
 
