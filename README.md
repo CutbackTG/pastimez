@@ -152,7 +152,7 @@ The design should also include social links in the footer for further social con
 
 **Colour scheme**
 
-The website will be designed in a super-clean and fresh mix of white #ffffff a custom purple hue #6a1b9a and an off-white grey for shade and subtle blend #f0f0f080 adding natural high contrast for accessiblity and legibility across the site.
+The website will be designed in a super-clean and fresh mix of white #ffffff a custom purple hue #6a1b9a adding natural high contrast for accessiblity and legibility across the site, and an off-white grey for shade and subtle blend #f0f0f080 adding natural high contrast for accessiblity and legibility across the site.
 
 <img src= assets/images/readme-images/website-colours.png  alt ="website colours for pastimez" width= 800>
 
@@ -161,7 +161,9 @@ The website will be designed in a super-clean and fresh mix of white #ffffff a c
 # Testing & Accessibility
 
 
+
 **Accessibility - Lighthouse Rating**
+
 
 
 **Testing User Stories from User Experience (UX)**
