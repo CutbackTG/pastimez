@@ -90,10 +90,17 @@ Please visit section [Testing User stories from User Experience (UX)] for target
 
 
 Typography
-The main font used throughout is the Arial font, a sans-serif font chosen for its modern design, readability and clean aesthetics with a fallback font of sans-serif if the user's browser fails to load Lato for any reason.
+The main font used throughout is the Arial font, a sans-serif font chosen for its modern design, readability and clean aesthetics with a fallback font of sans-serif if the user's browser fails to load Arial for any reason.
 
 **Wireframes**
 
+The initial concept for the Pastimez web application was to have it resemble the accordian type forms and menu options in role-playing-game classics such as "The Legend of Zelda" and the "Pokemon" series with graphic carousels showing the results and an added Discove rmore section where users can browse other local clubs with hobby ideas that may not have initially occurred to them.
+
+<img src= assets/images/readme-images/pastimez-wireframe.png  alt ="Initial wireframe design for the pastimez web application" width= 800>
+
+The large hero carousel should include inspirational and informative lines on the benefits of taking part in hobbies and social activities to drive interest in exploration, immediately followed by the search form (the major CTA of the website)
+
+The design should also include social links in the footer for further social contact and information sharing on hobby culture.
 
 # Testing & Accessibility
 
