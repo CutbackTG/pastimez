@@ -165,6 +165,11 @@ The website will be designed in a super-clean and fresh mix of white #ffffff a c
 
 # Testing & Accessibility
 
+W3C HTML & CSS Tests All Passed.
+
+![w3c html test passed](assets/images/readme-images/w3c-html-check.png)
+![css w3c test passed](assets/images/readme-images/css-w3c-check.png)
+
 **Accessibility - Lighthouse Rating**
 
 <img src= assets/images/readme-images/lighthouse-rating.png  alt ="pastimez lighthouse rating" width= 800>
@@ -276,13 +281,10 @@ These two bugs I haver grouped together for this report as it was primarily crea
 
 This third bug was caused by our earlier fix for clearing our map markers after each search, unfortunately it would also clear our "Your are Here" icon for subsequent searches so a line or two was added to re-state this icon for user reference.
 
-![fourth bug - when search button is clicked the site scrolls upwards](<assets/images/readme-images/bugs/fourth-bug-site scrollsup-on-search-button.png>)
-
-![fifth bug - the fields for input allow too many characters](assets/images/readme-images/bugs/fifth-bug-input-fields-too-long.png)
-
-![seventh bug - results scroll up on mobile](assets/images/readme-images/bugs/seventh-bug-mobile-results-scroll-up.png)
-
 ![eighth bug - result filters clear the cards](assets/images/readme-images/bugs/eighth-bug-results-filters-clear-cards.png)
+
+This last bug unfortunately remains in place and i sonly "solved" due to me removing the code for the optional toggles for sorting, the bug would cause all of the user results to clear upon clicking any of the toggles and a new search query would be needed to regenerate the results. 
+I realise now after pondering this problem for a while that it may just need the filtered results to be re-called for each button pending the results they have generated but that's a thought for the site's development stage.
 
 # Deployment
 
@@ -413,10 +415,12 @@ If you'd like to contribute to this project, feel free to fork the repository, m
 Guidance: Special thanks to The Code Institute for their support in helping me build and refine this first project.
 Google for developing a fantastic range of API's for new developers to learn and all the guidance available on their website.
 
-# Code:
-
-
 # Media:
-
+All images generated using HiDream I1 Dev on Nightcafe - https://creator.nightcafe.studio/explore 
 
 # References
+
+Google Developers. (n.d.). Google Maps Platform Documentation | Maps JavaScript API. [online] Available at: https://developers.google.com/maps/documentation/javascript.
+
+Google for Developers. (2025). Nearby Search (New). [online] Available at: https://developers.google.com/maps/documentation/places/web-service/nearby-search. 
+
