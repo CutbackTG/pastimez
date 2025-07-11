@@ -26,6 +26,10 @@ It also features (if fully realized) an expanded search for hobbies and interest
 An interactive navigation bar that takes the user to the relevant page section and a return to top button.
 Interactive Social media links ready for linking to target social media accounts for Pastimez.
 
+# Limitations
+
+Clubs, societies and organisations located using the Pastimez hobby finder are currently limited to those registered with Google as business or organisations, there are many more clubs and social activity groups out there so if you don't find the perfect pastime for you using this website please, venture out, explore and look out for those delightful little adverts in your local shops and libraries inviting you to join in with a local social circle.
+
 # Technologies Used
 
 - HTML5: For the structure and content of the website.
