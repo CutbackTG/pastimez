@@ -305,7 +305,7 @@
         // Render grid & carousel max 12
         results.slice(0, 12).forEach((place, idx) => {
           // Card
-          const photoUrl = place.photos && place.photos.length ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 }) : 'https://via.placeholder.com/300x200?text=No+Image';
+          const photoUrl = place.photos && place.photos.length ? place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 }) : 'https://placekittens.com/300/200';
           const col = document.createElement('div');
           col.className = 'col';
           const card = document.createElement('div');
