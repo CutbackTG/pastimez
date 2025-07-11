@@ -168,6 +168,35 @@ User Story 1 – Ella (First-Year University Student)
 | **Each result shows name & location** | Each result card includes the club name and address using `place.name` and `place.vicinity`.                                                                                                      | ✅            |
 | **Clickable contact / sign-up info**  | A "View on Google Maps" link is provided via `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, but no direct sign-up or contact integration yet.                                   | ⚠️ *Partial* |
 
+User Story 2 – Marcus (Chef with a Passion for Art)
+“As a busy professional with limited free time, I want to find creative hobby clubs happening nearby during weekends, so that I can relax and enjoy my passion for painting.”
+
+| Acceptance Criterion              | Evidence                                                                                                                  | Met? |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ---- |
+| **Filter by activity type**       | Users can select from a list of categories or input a keyword (e.g., "painting"), which gets mapped and queried.          | ✅    |
+| **Filter by proximity**           | A radius slider/input allows filtering by distance. Converted via `radiusMeters = radiusMiles * 1609.34` before API call. | ✅    |
+| **Filter by day/time (weekends)** | No current way to filter by specific days or times.                                                                       | ❌    |
+| **Mobile-friendly search**        | Uses responsive Bootstrap layout (`container-fluid`, `row`, `card h-100`) and works well on small screens.                | ✅    |
+
+User Story 3 – Janet (Recently Retired)
+“As a recently retired person with time to explore new hobbies, I want to browse a variety of clubs by interest or tag, so that I can try new activities and meet like-minded people.”
+
+| Acceptance Criterion                       | Evidence                                                                                                      | Met?         |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------ |
+| **Browse by keyword or interest tag**      | The `INTERESTS` array generates clickable interest tags that filter results via `renderDiscoverResults()`.    | ✅            |
+| **Multiple suggestions across categories** | Up to 12 nearby clubs are shown by default (`discoverResults.slice(0, 12)`), pulled from Google Places API.   | ✅            |
+| **Description & joining info**             | Each card shows name and address, and Google Maps links help with further exploration. No email/phone listed. | ⚠️ *Partial* |
+| **Accessible and easy-to-use interface**   | Uses semantic HTML, proper labels, `alt` attributes, and clear typography. Accessible to older users.         | ✅            |
+
+User Story 4 – Alex (Returning Board Game Enthusiast)
+“As a returning user who has already joined a local group, I want to check the platform regularly for new clubs and upcoming meetups, so that I can keep expanding my social circle and try new hobbies.”
+
+| Acceptance Criterion                           | Evidence                                                                            | Met? |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------- | ---- |
+| **Homepage highlights new/nearby clubs**       | "Discover Clubs Nearby" auto-renders on page load using current location.           | ✅    |
+| **Save interests for quicker future searches** | No persistent storage (e.g., `localStorage`) implemented yet. Tags reset on reload. | ❌    |
+| **Subscribe to notifications**                 | No email subscription or push notification system yet.                              | ❌    |
+| **Fast, intuitive search**                     | Single-page app with a fast form and clear flow. No page reload needed.             | ✅    |
 
 
 **Bugs discovered**
